@@ -1,7 +1,12 @@
 ﻿
 @{
-    ViewBag.Title = "我的订单";
+	ViewBag.Title = "我的订单";
+	Layout = "~/Views/Shared/_MobileLayout.cshtml";
 }
 
 <h2>我的订单</h2>
+
+@section scripts{
+	@Scripts.Render("~/bundles/orderjs")
+}
 

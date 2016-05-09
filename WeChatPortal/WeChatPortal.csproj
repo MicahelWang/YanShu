@@ -239,6 +239,61 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\example.css" />
+    <Content Include="Content\images\icon_nav_actionSheet.png" />
+    <Content Include="Content\images\icon_nav_article.png" />
+    <Content Include="Content\images\icon_nav_button.png" />
+    <Content Include="Content\images\icon_nav_cell.png" />
+    <Content Include="Content\images\icon_nav_dialog.png" />
+    <Content Include="Content\images\icon_nav_icons.png" />
+    <Content Include="Content\images\icon_nav_msg.png" />
+    <Content Include="Content\images\icon_nav_panel.png" />
+    <Content Include="Content\images\icon_nav_progress.png" />
+    <Content Include="Content\images\icon_nav_search_bar.png" />
+    <Content Include="Content\images\icon_nav_tab.png" />
+    <Content Include="Content\images\icon_nav_toast.png" />
+    <Content Include="Content\images\pic_article.png" />
+    <Content Include="Content\images\pic_article_1.jpg" />
+    <Content Include="Content\images\pic_article_2.jpg" />
+    <Content Include="Content\images\vcode.jpg" />
+    <Content Include="Content\weui.css" />
+    <Content Include="Content\weui.min.css" />
+    <Content Include="dist\example\example.css" />
+    <Content Include="dist\example\example.js" />
+    <Content Include="dist\example\images\icon_nav_actionSheet.png" />
+    <Content Include="dist\example\images\icon_nav_article.png" />
+    <Content Include="dist\example\images\icon_nav_button.png" />
+    <Content Include="dist\example\images\icon_nav_cell.png" />
+    <Content Include="dist\example\images\icon_nav_dialog.png" />
+    <Content Include="dist\example\images\icon_nav_icons.png" />
+    <Content Include="dist\example\images\icon_nav_msg.png" />
+    <Content Include="dist\example\images\icon_nav_panel.png" />
+    <Content Include="dist\example\images\icon_nav_progress.png" />
+    <Content Include="dist\example\images\icon_nav_search_bar.png" />
+    <Content Include="dist\example\images\icon_nav_tab.png" />
+    <Content Include="dist\example\images\icon_nav_toast.png" />
+    <Content Include="dist\example\images\pic_article.png" />
+    <Content Include="dist\example\images\pic_article_1.jpg" />
+    <Content Include="dist\example\images\pic_article_2.jpg" />
+    <Content Include="dist\example\images\vcode.jpg" />
+    <Content Include="dist\example\index.html" />
+    <Content Include="dist\example\router.min.js" />
+    <Content Include="dist\example\snapshot\actionSheet.png" />
+    <Content Include="dist\example\snapshot\button.png" />
+    <Content Include="dist\example\snapshot\cell.png" />
+    <Content Include="dist\example\snapshot\dialog1.png" />
+    <Content Include="dist\example\snapshot\dialog2.png" />
+    <Content Include="dist\example\snapshot\grid.png" />
+    <Content Include="dist\example\snapshot\icons.png" />
+    <Content Include="dist\example\snapshot\progress.png" />
+    <Content Include="dist\example\snapshot\qrcode.png" />
+    <Content Include="dist\example\snapshot\result.png" />
+    <Content Include="dist\example\snapshot\text.png" />
+    <Content Include="dist\example\snapshot\toast1.png" />
+    <Content Include="dist\example\snapshot\toast2.png" />
+    <Content Include="dist\example\zepto.min.js" />
+    <Content Include="dist\style\weui.css" />
+    <Content Include="dist\style\weui.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -275,6 +330,9 @@
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\order.js" />
+    <Content Include="Scripts\plan.js" />
+    <Content Include="Scripts\example.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -282,7 +340,11 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Scripts\router.min.js" />
+    <Content Include="Scripts\zepto.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -298,12 +360,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
-    <Content Include="Views\Plan\Create.cshtml" />
     <Content Include="Views\Plan\Index.cshtml" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <Content Include="Views\Shared\_MobileLayout.cshtml" />
+    <Content Include="Views\Plan\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

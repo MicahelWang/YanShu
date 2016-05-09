@@ -22,6 +22,20 @@ namespace WeChatPortal
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/weuicss").Include(
+                     "~/Content/weui.css",
+                     "~/Content/example.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/weuijs").Include(
+                      "~/Scripts/zepto.min.js",
+                      "~/Scripts/router.min.js"
+                      //,"~/Scripts/example.js"
+                      ));
+            bundles.Add(new ScriptBundle("~/bundles/orderjs").Include(
+                      "~/Scripts/order.js"));
+            bundles.Add(new ScriptBundle("~/bundles/planjs").Include(
+                     "~/Scripts/plan.js"));
         }
     }
 }
