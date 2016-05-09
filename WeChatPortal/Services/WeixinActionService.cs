@@ -1,6 +1,7 @@
 ﻿using System;
 using WeChat.Core.XmlModels;
 using WeChatPortal.Constants.WeChat.Core.Constants;
+using WeChatPortal.Entities.XmlModels;
 using WeChatPortal.Entities.XmlModels.Request;
 using WeChatPortal.Entities.XmlModels.Response;
 

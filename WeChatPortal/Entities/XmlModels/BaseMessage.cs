@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 using WeChatPortal.Entities.XmlModels.Response;
 using WeChatPortal.Utils;
 
-namespace WeChat.Core.XmlModels
+namespace WeChatPortal.Entities.XmlModels
 {
     /// <summary>
     /// 基础消息内容

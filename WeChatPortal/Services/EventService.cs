@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using WeChat.Core.XmlModels;
 using WeChatPortal.Entities.Data;
+using WeChatPortal.Entities.XmlModels;
 using WeChatPortal.Entities.XmlModels.Request;
 using WeChatPortal.Entities.XmlModels.Response;
 
