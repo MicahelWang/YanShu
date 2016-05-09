@@ -3,26 +3,26 @@
     {
       "name": "产品介绍",
       "sub_button": [
-        {
-          "type": "click",
-          "name": "保誠++雋陞儲蓄保障計劃EGS",
-          "key": "BCEGS"
-        },
-        {
-          "type": "click",
-          "name": "保诚+危疾终身保CCL3",
-          "key": "BCCCL3"
-        },
-        {
-          "type": "click",
-          "name": "AIA+進泰安心保PCP",
-          "key": "AIAPCP"
-        },
-        {
-          "type": "click",
-          "name": "AIA+充裕未來計劃BP",
-          "key": "AIABP"
-        }
+		{
+			"type": "click",
+			"name": "隽升储蓄保障计划",
+			"key": "BCEGS"
+		},
+		{
+			"type": "click",
+			"name": "危疾终身保",
+			"key": "BCCCL3"
+		},
+		{
+			"type": "click",
+			"name": "加裕倍安保",
+			"key": "AIAPCP"
+		},
+		{
+			"type": "click",
+			"name": "充裕未来",
+			"key": "AIABP"
+		}
 
       ]
     },

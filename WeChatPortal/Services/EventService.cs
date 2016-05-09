@@ -99,7 +99,7 @@ namespace WeChatPortal.Services
                     var aiapcpArticles = new List<ArticleEntity> {
                         new ArticleEntity()
                         {
-                            Title = "AIA+加裕倍安保",
+                            Title = "加裕倍安保",
                             PicUrl = "http://res.eqh5.com/o_1ahr4ti7r4gp1lo716j9145j13uik.png",
                             Url = "http://a.eqxiu.com/s/1Flwv9cb",
                             Description = @"加裕倍安保
