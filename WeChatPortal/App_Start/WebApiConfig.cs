@@ -21,7 +21,9 @@ namespace WeChatPortal
 
             config.Filters.Add(new ApiActionFilterAttribute());
             config.Filters.Add(new ApiExceptionFilterAttribute());
+
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+
         }
     }
 }

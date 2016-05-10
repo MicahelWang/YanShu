@@ -4,13 +4,10 @@ using Newtonsoft.Json;
 namespace WeChatPortal.Models
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Product")]
-    [Serializable]
     public partial class Product
     {
         public int ID { get; set; }

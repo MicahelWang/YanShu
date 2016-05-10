@@ -1,5 +1,8 @@
-﻿using System.Web.Http.Controllers;
+﻿using System.Net;
+using System.Net.Http;
+using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
+using WeChatPortal.Entities.Data;
 using WeChatPortal.Utils;
 
 namespace WeChatPortal.Filters
@@ -21,6 +24,14 @@ namespace WeChatPortal.Filters
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
             base.OnActionExecuted(actionExecutedContext);
+            ResponseEntity<object> result = new ResponseEntity<object>();
+
+            // 取得由 API 返回的状态代码
+            result.Success = actionExecutedContext.ActionContext.Response.StatusCode == HttpStatusCode.OK;
+            // 取得由 API 返回的资料
+            result.Data = actionExecutedContext.ActionContext.Response.Content.ReadAsAsync<object>().Result;
+            // 重新封装回传格式
+            actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.OK, result);
         }
     }
 }
