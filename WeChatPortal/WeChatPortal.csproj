@@ -217,6 +217,7 @@
     <Compile Include="Filters\ApiActionFilterAttribute.cs" />
     <Compile Include="Filters\ApiExceptionFilterAttribute.cs" />
     <Compile Include="Filters\CustomExceptionFilterAttribute.cs" />
+    <Compile Include="Filters\CustomXmlFormatter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Net.Http.Formatting;
+using System.Web.Http;
 using WeChatPortal.Filters;
 
 namespace WeChatPortal
@@ -20,6 +21,7 @@ namespace WeChatPortal
 
             config.Filters.Add(new ApiActionFilterAttribute());
             config.Filters.Add(new ApiExceptionFilterAttribute());
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
     }
 }
