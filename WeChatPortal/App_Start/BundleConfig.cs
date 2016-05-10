@@ -28,9 +28,10 @@ namespace WeChatPortal
                      "~/Content/example.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/weuijs").Include(
-                      "~/Scripts/zepto.min.js",
-                      "~/Scripts/router.min.js"
-                      //,"~/Scripts/example.js"
+                      "~/Scripts/router.min.js",
+                      "~/Scripts/underscore-awesomer.min.js"
+                      //,
+                      //"~/Scripts/backbone-{version}.js"
                       ));
             bundles.Add(new ScriptBundle("~/bundles/orderjs").Include(
                       "~/Scripts/order.js"));
