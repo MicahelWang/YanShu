@@ -1,50 +1,7 @@
 $(function () {
 
-    var router = new Router({
-        container: '#container',
-        enterTimeout: 250,
-        leaveTimeout: 250
-    });
 
-    // grid
-    var home = {
-        url: '/',
-        className: 'planIndex',
-        render: function () {
-            return $('#tpl_planIndex').html();
-        }
-    };
-    var create = {
-        url: '/create',
-        className: 'Create',
-        render: function () {
-            return $('#tpl_planCreate').html();
-        }
-    };
-    var edit = {
-        url: '/edit/:id',
-        className: 'Create',
-        render: function () {
-            return $('#tpl_planEdit').html();
-        }
-    };
-    // detail
-    var detail = {
-        url: '/detail/:id',
-        className: 'planDetail',
-        render: function () {
-            var id = this.params.id;
-            return $('#tpl_planDetail').html();
-        }
-    };
-
-    router.push(home)
-         .push(create)
-         .push(edit)
-        .push(detail)
-        .setDefault('/')
-        .init();
-
+    
 
     // .container 设置了 overflow 属性, 导致 Android 手机下输入框获取焦点时, 输入法挡住输入框的 bug
     // 相关 issue: https://github.com/weui/weui/issues/15
@@ -61,4 +18,46 @@ $(function () {
             }
         })
     }
+});
+
+
+angular.module('ngRouteExample', ['ngRoute'])
+.controller('HomeController', function ($scope) {})
+.controller('CreateController', function ($scope) {  })
+.controller('DeleteController', function ($scope) { })
+.controller('EditController', function ($scope) {  })
+.controller('DetailController', function ($scope, $routeParams, $http) {
+
+        $scope.Detail = {
+            PlanId: $routeParams.id,
+            Name: "Plan1"
+        };
+        $http.get("/api/product")
+       .success(function (response) { $scope.Detail.Products = response.Data; });
+    })
+.config(function ($routeProvider) {
+    $routeProvider.
+    when('/', {
+        templateUrl: 'tpl_planIndex',
+        controller: 'HomeController'
+    }).
+    when('/Create', {
+        templateUrl: 'tpl_planCreate',
+        controller: 'CreateController'
+    }).
+        when('/detail/:id', {
+            templateUrl: 'tpl_planDetail',
+            controller: 'DetailController'
+        }).
+        when('/Delete/:id', {
+            templateUrl: 'tpl_planDetail',
+            controller: 'DeleteController'
+        }).
+        when('/Edit/:id', {
+            templateUrl: 'tpl_planEdit',
+            controller: 'EditController'
+        }).
+    otherwise({
+        redirectTo: '/'
+    });
 });

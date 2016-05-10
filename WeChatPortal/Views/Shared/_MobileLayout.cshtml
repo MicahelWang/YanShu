@@ -9,8 +9,9 @@
 	@Scripts.Render("~/bundles/jquery")
 </head>
 
-<body ontouchstart>
+<body>
 	<div class="container" id="container">
+		@RenderBody()
 	</div>
 	@RenderSection("scriptsContainer", required: false)
 	@Scripts.Render("~/bundles/weuijs")

@@ -4,11 +4,32 @@
 
 	Layout = "~/Views/Shared/_MobileLayout.cshtml";
 }
+<body ng-app="ngRouteExample" class="ng-scope">
+	<script type="text/ng-template" id="embedded.home.html">
+		<h1> Home </h1>
+	</script>
 
+	<script type="text/ng-template" id="embedded.about.html">
+		<h1> About </h1>
+	</script>
+
+	<div>
+		<div id="navigation">
+			<a href="#/">Home</a>
+			<a href="#/Create">Create</a>
+			<a href="#/Delete/1">Delete</a>
+			<a href="#/Edit/1">Edit</a>
+			<a href="#/Detail/1">Detail</a>
+		</div>
+
+		<div ng-view="">
+		</div>
+	</div>
+</body>
 @section scriptsContainer{
-	<script type="text/html" id="tpl_planIndex">
+	<script type="text/ng-template" id="tpl_planIndex">
 		<div class="bd">
-		
+
 			<div class="weui_cells_title">我的计划书</div>
 			<div class="weui_cells weui_cells_access">
 
@@ -29,38 +50,47 @@
 			</div>
 		</div>
 	</script>
-	<script type="text/html" id="tpl_planDetail">
+	<script type="text/ng-template" id="tpl_planDetail">
 		<div class="hd">
-			<h1 class="page_title">Button</h1>
+			<h1 class="page_title">详情</h1>
+			{{'id='+Detail.PlanId+',name'+Detail.Name}}
 		</div>
-		<div class="weui_cells_title">表单</div>
+		<div class="weui_cells_title">详情</div>
+		<select ng-model="selectedSite" ng-options="x.Name for x in Detail.Products"></select>
+
+		<h1>你选择的是: {{selectedSite.Name}}</h1>
+		<p>网址为: {{selectedSite.PlanId}}</p>
 		<div class="weui_cells weui_cells_form">
 			<div class="weui_cell">
-				<div class="weui_cell_hd"><label class="weui_label">qq</label>
+				<div class="weui_cell_hd">
+					<label class="weui_label">qq</label>
 				</div>
 				<div class="weui_cell_bd weui_cell_primary">
-					<input class="weui_input" type="number" pattern="[0-9]*" placeholder="请输入qq号">
+					<input ng-model="Detail.PlanId" class="weui_input"  placeholder="请输入qq号">
 				</div>
 			</div>
 			<div class="weui_cell weui_vcode">
-				<div class="weui_cell_hd"><label class="weui_label">验证码</label>
+				<div class="weui_cell_hd">
+					<label class="weui_label">验证码</label>
 				</div>
 				<div class="weui_cell_bd weui_cell_primary">
-					<input class="weui_input" type="number" placeholder="请输入验证码">
+					<input ng-model="Detail.Name" class="weui_input" placeholder="请输入验证码">
 				</div>
 				<div class="weui_cell_ft">
 					<img src="/Content/images/vcode.jpg">
 				</div>
 			</div>
 			<div class="weui_cell">
-				<div class="weui_cell_hd"><label class="weui_label">银行卡</label>
+				<div class="weui_cell_hd">
+					<label class="weui_label">银行卡</label>
 				</div>
 				<div class="weui_cell_bd weui_cell_primary">
 					<input class="weui_input" type="number" pattern="[0-9]*" placeholder="请输入银行卡号">
 				</div>
 			</div>
 			<div class="weui_cell weui_vcode weui_cell_warn">
-				<div class="weui_cell_hd"><label class="weui_label">验证码</label>
+				<div class="weui_cell_hd">
+					<label class="weui_label">验证码</label>
 				</div>
 				<div class="weui_cell_bd weui_cell_primary">
 					<input class="weui_input" type="number" placeholder="请输入验证码">
@@ -72,40 +102,85 @@
 			</div>
 		</div>
 	</script>
-
-<script type="text/html" id="tpl_planCreate">
-	<div class="bd">
-
-		<div class="weui_cells_title">制作计划书</div>
-		<div class="weui_cells weui_cells_radio">
-			<label class="weui_cell weui_check_label" for="x11">
-				<div class="weui_cell_bd weui_cell_primary">
-					<p>cell standard</p>
-				</div>
-				<div class="weui_cell_ft">
-					<input type="radio" class="weui_check" name="radio1" id="x11">
-					<span class="weui_icon_checked"></span>
-				</div>
-			</label>
-			<label class="weui_cell weui_check_label" for="x12">
-
-				<div class="weui_cell_bd weui_cell_primary">
-					<p>cell standard</p>
-				</div>
-				<div class="weui_cell_ft">
-					<input type="radio" name="radio1" class="weui_check" id="x12" checked="checked">
-					<span class="weui_icon_checked"></span>
-				</div>
-			</label>
-		</div>
-		
+	<script type="text/ng-template" id="tpl_planCreate">
 		<div class="bd">
-			<a href="javascript:;" class="weui_btn weui_btn_primary">下一步</a>
 
+			<div class="weui_cells_title">制作计划书</div>
+			<div class="weui_cells weui_cells_radio">
+				<label class="weui_cell weui_check_label" for="x11">
+					<div class="weui_cell_bd weui_cell_primary">
+						<p>cell standard</p>
+					</div>
+					<div class="weui_cell_ft">
+						<input type="radio" class="weui_check" name="radio1" id="x11">
+						<span class="weui_icon_checked"></span>
+					</div>
+				</label>
+				<label class="weui_cell weui_check_label" for="x12">
+
+					<div class="weui_cell_bd weui_cell_primary">
+						<p>cell standard</p>
+					</div>
+					<div class="weui_cell_ft">
+						<input type="radio" name="radio1" class="weui_check" id="x12" checked="checked">
+						<span class="weui_icon_checked"></span>
+					</div>
+				</label>
+			</div>
+
+			<div class="bd">
+				<a href="javascript:;" class="weui_btn weui_btn_primary">下一步</a>
+
+			</div>
 		</div>
-	</div>
-</script>
-
+	</script>
+	<script type="text/ng-template" id="tpl_planEdit">
+		<div class="hd">
+			<h1 class="page_title">编辑</h1>
+		</div>
+		<div class="weui_cells_title">表单</div>
+		<div class="weui_cells weui_cells_form">
+			<div class="weui_cell">
+				<div class="weui_cell_hd">
+					<label class="weui_label">qq</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="number" pattern="[0-9]*" placeholder="请输入qq号">
+				</div>
+			</div>
+			<div class="weui_cell weui_vcode">
+				<div class="weui_cell_hd">
+					<label class="weui_label">验证码</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="number" placeholder="请输入验证码">
+				</div>
+				<div class="weui_cell_ft">
+					<img src="/Content/images/vcode.jpg">
+				</div>
+			</div>
+			<div class="weui_cell">
+				<div class="weui_cell_hd">
+					<label class="weui_label">银行卡</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="number" pattern="[0-9]*" placeholder="请输入银行卡号">
+				</div>
+			</div>
+			<div class="weui_cell weui_vcode weui_cell_warn">
+				<div class="weui_cell_hd">
+					<label class="weui_label">验证码</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="number" placeholder="请输入验证码">
+				</div>
+				<div class="weui_cell_ft">
+					<i class="weui_icon_warn"></i>
+					<img src="/Content/images/vcode.jpg">
+				</div>
+			</div>
+		</div>
+	</script>
 }
 @section scripts{
 	@Scripts.Render("~/bundles/planjs")

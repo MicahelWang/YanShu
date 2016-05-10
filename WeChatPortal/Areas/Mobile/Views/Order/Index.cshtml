@@ -1,12 +1,27 @@
-﻿
-@{
+﻿@{
 	ViewBag.Title = "我的订单";
 	Layout = "~/Views/Shared/_MobileLayout.cshtml";
 }
-
-<h2>我的订单</h2>
-
 @section scripts{
 	@Scripts.Render("~/bundles/orderjs")
 }
 
+<div ng-app="ngRouteExample" class="ng-scope">
+	<script type="text/ng-template" id="embedded.home.html">
+		<h1> Home </h1>
+	</script>
+
+	<script type="text/ng-template" id="embedded.about.html">
+		<h1> About </h1>
+	</script>
+
+	<div>
+		<div id="navigation">
+			<a href="#/home">Home</a>
+			<a href="#/about">About</a>
+		</div>
+
+		<div ng-view="">
+		</div>
+	</div>
+</div>
