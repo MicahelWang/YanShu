@@ -1,40 +1,49 @@
 $(function () {
-
-
-    
-
-    // .container 设置了 overflow 属性, 导致 Android 手机下输入框获取焦点时, 输入法挡住输入框的 bug
-    // 相关 issue: https://github.com/weui/weui/issues/15
-    // 解决方法:
-    // 0. .container 去掉 overflow 属性, 但此 demo 下会引发别的问题
-    // 1. 参考 http://stackoverflow.com/questions/23757345/android-does-not-correctly-scroll-on-input-focus-if-not-body-element
-    //    Android 手机下, input 或 textarea 元素聚焦时, 主动滚一把
-    if (/Android/gi.test(navigator.userAgent)) {
-        window.addEventListener('resize', function () {
-            if (document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
-                window.setTimeout(function () {
-                    document.activeElement.scrollIntoViewIfNeeded();
-                }, 0);
-            }
-        })
-    }
+    Cache.Set(productKey, InitProducts);
 });
 
+var InitProducts = function (fn) {
+    $.getJSON("/api/product", function (response) {
+        if (response.Success) {
+            var result = response.Data;
+            fn(result);
+        };
+    });
+}
+var InitPlans = function (fn) {
+    $.getJSON("/api/product", function (response) {
+        if (response.Success) {
+            var result = response.Data;
+            fn(result);
+        };
+    });
+}
 
 angular.module('ngRouteExample', ['ngRoute'])
-.controller('HomeController', function ($scope) {})
-.controller('CreateController', function ($scope) {  })
+.controller('HomeController', function ($scope) {
+    $scope.Plans =new Array;
+    InitPlans(function (data) {
+        $scope.Plans = data;
+        console.info($scope.Plans);
+        //Cache.Set(CacheKeys.Plans, data);
+    });
+    console.info("HomeController");
+    console.info($scope.Plans);
+})
+.controller('CreateController', function ($scope) {
+    $scope.Products = Cache.Get(CacheKeys.Products);
+})
 .controller('DeleteController', function ($scope) { })
-.controller('EditController', function ($scope) {  })
+.controller('EditController', function ($scope) { })
 .controller('DetailController', function ($scope, $routeParams, $http) {
 
-        $scope.Detail = {
-            PlanId: $routeParams.id,
-            Name: "Plan1"
-        };
-        $http.get("/api/product")
-       .success(function (response) { $scope.Detail.Products = response.Data; });
-    })
+    $scope.Detail = {
+        PlanId: $routeParams.id,
+        Name: "Plan1"
+    };
+    $http.get("/api/product")
+   .success(function (response) { $scope.Detail.Products = response.Data; });
+})
 .config(function ($routeProvider) {
     $routeProvider.
     when('/', {
@@ -45,7 +54,7 @@ angular.module('ngRouteExample', ['ngRoute'])
         templateUrl: 'tpl_planCreate',
         controller: 'CreateController'
     }).
-        when('/detail/:id', {
+        when('/Detail/:id', {
             templateUrl: 'tpl_planDetail',
             controller: 'DetailController'
         }).

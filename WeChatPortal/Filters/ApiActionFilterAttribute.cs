@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
@@ -7,8 +8,20 @@ using WeChatPortal.Utils;
 
 namespace WeChatPortal.Filters
 {
+    [AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = false)]
     public class ApiActionFilterAttribute : ActionFilterAttribute
     {
+        public bool NeedExcute { get; set; }
+
+        public ApiActionFilterAttribute( bool needExcute)
+        {
+            this.NeedExcute = needExcute;
+        }
+
+        public ApiActionFilterAttribute()
+        {
+            NeedExcute = true;
+        }
 
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
@@ -24,13 +37,19 @@ namespace WeChatPortal.Filters
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
             base.OnActionExecuted(actionExecutedContext);
-            var result = new ResponseEntity<object>
+            if (NeedExcute)
             {
-                Success = actionExecutedContext.ActionContext.Response.StatusCode == HttpStatusCode.OK,
-                Data = actionExecutedContext.ActionContext.Response.Content.ReadAsAsync<object>().Result
-            };
-            // 重新封装回传格式
-            actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.OK, result);
+                var result = new ResponseEntity<object>
+                {
+                    Success = actionExecutedContext.ActionContext.Response.StatusCode == HttpStatusCode.OK,
+                    Data = actionExecutedContext.ActionContext.Response.Content.ReadAsAsync<object>().Result
+                };
+                // 重新封装回传格式
+                actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+           
+            
+           
         }
     }
 }

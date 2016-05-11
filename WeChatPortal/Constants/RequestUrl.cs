@@ -2,6 +2,32 @@
 {
     public class RequestUrl
     {
+
+        #region Authorize
+
+        private const string AuthorizeUrl =
+            "https://open.weixin.qq.com/connect/oauth2/authorize?appid={0}&redirect_uri={1}&response_type=code&scope={2}&state={3}#wechat_redirect";
+
+        public static string GetAuthorize(string appId,string returnUrl,string scope,string state= "STATE")
+        {
+            return string.Format(AuthorizeUrl, appId, returnUrl, scope,state);
+        }
+
+        private const string AuthorzeAccessTokenUrl =
+           "https://api.weixin.qq.com/sns/oauth2/access_token?appid={0}&secret={1}&code={2}&grant_type=authorization_code";
+
+        public static string GetAuthorzeAccessToken(string appId, string secret, string code)
+        {
+            return string.Format(AuthorzeAccessTokenUrl, appId, secret, code);
+        }
+
+        private const string AuthorzeUserInfoUrl =
+            "https://api.weixin.qq.com/sns/userinfo?access_token={0}&openid={1}&lang=zh_CN";
+        public static string GetAuthorzeUserInfo(string appId, string token)
+        {
+            return string.Format(AuthorzeUserInfoUrl, appId, token);
+        }
+        #endregion
         private const string TokenUrl =
             "https://api.weixin.qq.com/cgi-bin/token?grant_type={0}&appid={1}&secret={2}";
         /// <summary>

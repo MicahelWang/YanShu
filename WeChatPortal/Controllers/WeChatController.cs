@@ -5,12 +5,14 @@ using System.Web.Http;
 using System.Xml;
 using WeChat.Core.XmlModels;
 using WeChatPortal.Entities.XmlModels;
+using WeChatPortal.Filters;
 using WeChatPortal.Services;
 using WeChatPortal.Utils;
 using WeChatPortal.Utils.Mvc;
 
 namespace WeChatPortal.Controllers
 {
+    [ApiActionFilter(false)]
     public class WeChatController : ApiController
     {
         private readonly WeChatService _chatService;

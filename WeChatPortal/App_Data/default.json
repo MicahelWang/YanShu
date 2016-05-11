@@ -29,11 +29,11 @@
     {
       "name": "我要办理",
       "sub_button": [
-        {
-          "type": "view",
-          "name": "计划书",
-          "url": "http://51yanshu.8866.org/Plan/Create"
-        },
+		{
+			"type": "view",
+			"name": "计划书",
+			"url": "http://51yanshu.8866.org/Mobile/Plan/#/Create"
+		},
         {
           "type": "click",
           "name": "预约签单",
@@ -44,15 +44,15 @@
     {
       "name": "我的",
       "sub_button": [
-        {
-          "type": "view",
-          "name": "我的订单",
-          "url": "http://51yanshu.8866.org/Order"
-        },
+		{
+			"type": "view",
+			"name": "我的订单",
+			"url": "http://51yanshu.8866.org/Mobile/Order"
+		},
         {
            "type": "view",
           "name": "我的计划书",
-          "url": "http://51yanshu.8866.org/Plan"
+          "url": "http://51yanshu.8866.org/Mobile/Plan"
         }
       ]
     }

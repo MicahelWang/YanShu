@@ -140,7 +140,7 @@
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Mobile\Models\" />
     <Folder Include="Scripts\angular\i18n\ngLocale\" />
-    <Folder Include="Scripts\Order\" />
+    <Folder Include="Views\Authorize\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -180,9 +180,11 @@
     <Compile Include="Areas\Mobile\Controllers\OrderController.cs" />
     <Compile Include="Areas\Mobile\Controllers\PlanController.cs" />
     <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Constants\CacheKey.cs" />
     <Compile Include="Constants\Enums.cs" />
     <Compile Include="Constants\RequestUrl.cs" />
+    <Compile Include="Controllers\AuthorizeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -217,7 +219,9 @@
     <Compile Include="Entities\XmlModels\Response\ResponseVoice.cs" />
     <Compile Include="Filters\ApiActionFilterAttribute.cs" />
     <Compile Include="Filters\ApiExceptionFilterAttribute.cs" />
+    <Compile Include="Filters\CustomActionFilterAttribute.cs" />
     <Compile Include="Filters\CustomExceptionFilterAttribute.cs" />
+    <Compile Include="Filters\YanShuAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,6 +235,7 @@
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AuthorizeService.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\ContextService.cs" />
     <Compile Include="Services\MenuService.cs" />
@@ -2792,6 +2797,7 @@
     <Content Include="Scripts\Dust\dust-full.js" />
     <Content Include="Scripts\Dust\dust-full.min.js" />
     <Content Include="Scripts\order.js" />
+    <Content Include="Scripts\Base.js" />
     <Content Include="Scripts\plan.js" />
     <Content Include="Scripts\example.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
@@ -2827,7 +2833,9 @@
     <Content Include="Scripts\templates\Order\list.dust" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

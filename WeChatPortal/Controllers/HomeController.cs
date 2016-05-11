@@ -1,8 +1,9 @@
 ﻿using System.Web.Mvc;
+using WeChatPortal.Filters;
 
 namespace WeChatPortal.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {

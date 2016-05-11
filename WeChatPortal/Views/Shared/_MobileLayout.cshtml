@@ -8,11 +8,11 @@
 	@Styles.Render("~/Content/weuicss")
 	@Scripts.Render("~/bundles/jquery")
 </head>
-
-<body>
+<body ng-app="ngRouteExample" class="ng-scope">
 	<div class="container" id="container">
 		@RenderBody()
 	</div>
+	<script src="~/Scripts/Base.js"></script>
 	@RenderSection("scriptsContainer", required: false)
 	@Scripts.Render("~/bundles/weuijs")
 	@RenderSection("scripts", required: false)
