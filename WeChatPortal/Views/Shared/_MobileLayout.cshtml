@@ -5,10 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @*@Styles.Render("~/Content/weuicss")
-    @Scripts.Render("~/bundles/jquery")*@
-    <link href="~/Content/example.css" rel="stylesheet" />
-    <link href="~/Content/weui.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/weuicss")
+    @Scripts.Render("~/bundles/jquery")
     <script src="~/Scripts/jquery-2.2.3.min.js"></script>
 </head>
 <body ng-app="ngRouteExample" class="ng-scope">
@@ -17,9 +15,7 @@
     </div>
     <script src="~/Scripts/Base.js"></script>
     @RenderSection("scriptsContainer", required: false)
-    <script src="~/Scripts/angular/angular.min.js"></script>
-    <script src="~/Scripts/angular/angular-route.min.js"></script>
-    @*@Scripts.Render("~/bundles/weuijs")*@
+    @Scripts.Render("~/bundles/weuijs")
     @RenderSection("scripts", required: false)
 </body>
 </html>
