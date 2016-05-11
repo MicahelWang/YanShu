@@ -38,7 +38,7 @@ namespace WeChatPortal.Filters
                 }
                 else
                 {
-                    url = "/Home/Login";
+                    url = "/Home/Login?ReturnUrl="+currentUrl.UrlEncode();
                 }
 
                 filterContext.HttpContext.Response.Redirect(url);

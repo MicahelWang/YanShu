@@ -227,6 +227,7 @@
     </Compile>
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\ArticleContent.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Content.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\InsuranceDb.cs" />
@@ -2831,6 +2832,7 @@
     <Content Include="Scripts\jquery-2.2.3.min.map" />
     <Content Include="Views\Shared\_MobileLayout.cshtml" />
     <Content Include="Scripts\templates\Order\list.dust" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
