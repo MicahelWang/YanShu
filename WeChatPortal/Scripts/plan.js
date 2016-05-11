@@ -1,27 +1,6 @@
-$(function () {
-    Cache.Set(productKey, InitProducts);
-});
-
-var InitProducts = function (fn) {
-    $.getJSON("/api/product", function (response) {
-        if (response.Success) {
-            var result = response.Data;
-            fn(result);
-        };
-    });
-}
-var InitPlans = function (fn) {
-    $.getJSON("/api/product", function (response) {
-        if (response.Success) {
-            var result = response.Data;
-            fn(result);
-        };
-    });
-}
-
 angular.module('ngRouteExample', ['ngRoute'])
-.controller('HomeController', function ($scope) {
-    $scope.Plans =new Array;
+.controller('HomeController', ['$scope', function ($scope) {
+    $scope.Plans = new Array;
     InitPlans(function (data) {
         $scope.Plans = data;
         console.info($scope.Plans);
@@ -29,13 +8,13 @@ angular.module('ngRouteExample', ['ngRoute'])
     });
     console.info("HomeController");
     console.info($scope.Plans);
-})
-.controller('CreateController', function ($scope) {
+}])
+.controller('CreateController', ['$scope', function ($scope) {
     $scope.Products = Cache.Get(CacheKeys.Products);
-})
-.controller('DeleteController', function ($scope) { })
-.controller('EditController', function ($scope) { })
-.controller('DetailController', function ($scope, $routeParams, $http) {
+}])
+.controller('DeleteController', ['$scope', function ($scope) { }])
+.controller('EditController', ['$scope', function ($scope) { }])
+.controller('DetailController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
 
     $scope.Detail = {
         PlanId: $routeParams.id,
@@ -43,7 +22,7 @@ angular.module('ngRouteExample', ['ngRoute'])
     };
     $http.get("/api/product")
    .success(function (response) { $scope.Detail.Products = response.Data; });
-})
+}])
 .config(function ($routeProvider) {
     $routeProvider.
     when('/', {
@@ -70,3 +49,24 @@ angular.module('ngRouteExample', ['ngRoute'])
         redirectTo: '/'
     });
 });
+
+$(function () {
+    Cache.Set(productKey, InitProducts);
+});
+
+var InitProducts = function (fn) {
+    $.getJSON("/api/product", function (response) {
+        if (response.Success) {
+            var result = response.Data;
+            fn(result);
+        };
+    });
+}
+var InitPlans = function (fn) {
+    $.getJSON("/api/product", function (response) {
+        if (response.Success) {
+            var result = response.Data;
+            fn(result);
+        };
+    });
+}
