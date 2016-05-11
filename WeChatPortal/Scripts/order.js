@@ -9,26 +9,25 @@ $(function () {
         enterTimeout: 250,
         leaveTimeout: 250
     });
-    dust.register()
     // grid
     var home = {
         url: '/',
         className: 'home',
         render: function () {
-            var source = {
-                "title": "Famous People",
-                "names": [{ "name": "Larry" }, { "name": "Curly" }, { "name": "Moe" }]
-            };
-            var template = $("#tpl_list").html();
-            var compiled = dust.compile(template, 'hello');
-            // Register the template with Dust
-            dust.loadSource(compiled);
-            var html = $("<div></div>").html();
-            dust.render('hello', source, function (err, out) {
-                html = out;
-            });
+            //var source = {
+            //    "title": "Famous People",
+            //    "names": [{ "name": "Larry" }, { "name": "Curly" }, { "name": "Moe" }]
+            //};
+            //var template = $("#tpl_list").html();
+            //var compiled = dust.compile(template, 'hello');
+            //// Register the template with Dust
+            //dust.loadSource(compiled);
+            //var html = $("<div></div>").html();
+            //dust.render('hello', source, function (err, out) {
+            //    html = out;
+            //});
           
-            return html;
+            //return html;
             return $('#tpl_home').html();
         }
     };

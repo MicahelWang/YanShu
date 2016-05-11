@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using WeChatPortal.Constants;
 using WeChatPortal.Utils;
 using WeChatPortal.Utils.HttpUtility;
+using UrlHelper = System.Web.Http.Routing.UrlHelper;
 
 namespace WeChatPortal.Filters
 {
@@ -23,10 +24,25 @@ namespace WeChatPortal.Filters
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             if (filterContext.HttpContext.Request.IsAuthenticated) return;
-            var currentUrl = filterContext.RequestContext.HttpContext.Request.Url.AbsoluteUri;
-            var returnUrl = "http://51yanshu.8866.org/Authorize";
-            var url = RequestUrl.GetAuthorize(ConfigSetting.AppId, returnUrl.UrlEncode(), "snsapi_base", currentUrl.UrlEncode());
-            filterContext.HttpContext.Response.Redirect(url);
+
+            var request = filterContext.RequestContext.HttpContext.Request;
+            if (request.Url != null)
+            {
+                string userAgent = request.UserAgent;
+                var currentUrl = request.Url.AbsoluteUri;
+                string url;
+                if (userAgent != null && userAgent.ToLower().Contains("micromessenger"))
+                {
+                    var returnUrl = "http://51yanshu.8866.org/Authorize";
+                    url = RequestUrl.GetAuthorize(ConfigSetting.AppId, returnUrl.UrlEncode(), "snsapi_base", currentUrl.UrlEncode());
+                }
+                else
+                {
+                    url = "/Home/Login";
+                }
+
+                filterContext.HttpContext.Response.Redirect(url);
+            }
         }
     }
 }
