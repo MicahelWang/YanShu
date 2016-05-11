@@ -1,27 +1,17 @@
 ﻿
 @{
     ViewBag.Title = "我的计划书";
-
+    ViewBag.NgScopeName = "ngPlanApp";
     Layout = "~/Views/Shared/_MobileLayout.cshtml";
 }
 
 <div>
-    <div id="navigation">
-        <a href="#/">Home</a>
-        <a href="#/Create">Create</a>
-        <a href="#/Delete/1">Delete</a>
-        <a href="#/Edit/1">Edit</a>
-        <a href="#/Detail/1">Detail</a>
-    </div>
-
     <div ng-view="">
     </div>
 </div>
 @section scriptsContainer{
-
     <script type="text/ng-template" id="tpl_planIndex">
-        <div class="bd">
-            {{Plans[0].Name}}
+        <div class="bd">           
             <div class="weui_cells_title">我的计划书</div>
             <div class="weui_cells weui_cells_access">
                 <a class="weui_cell" href="#/Detail/{{Item.ID}}" ng-repeat="Item in Plans">
@@ -96,12 +86,12 @@
                         <p>{{Item.Name}}</p>
                     </div>
                     <div class="weui_cell_ft">
-                        <input type="radio" class="weui_check" name="radio1" id="Item_{{Item.ID}}">
+                        <input type="radio" class="weui_check" name="radio1" id="Item_{{Item.ID}}" value="{{Item.ID}}" ng-model="Plan.ProductType">
                         <span class="weui_icon_checked"></span>
                     </div>
                 </label>
             </div>
-
+            {{Plan.ProductType}}
             <div class="bd">
                 <a href="javascript:;" class="weui_btn weui_btn_primary">下一步</a>
 

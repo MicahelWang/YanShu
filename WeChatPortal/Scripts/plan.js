@@ -1,16 +1,20 @@
-angular.module('ngRouteExample', ['ngRoute'])
-.controller('HomeController', ['$scope', function ($scope) {
+angular.module('ngPlanApp', ['ngRoute'])
+.controller('HomeController', ['$scope', '$http', function ($scope, $http) {
     $scope.Plans = new Array;
-    InitPlans(function (data) {
-        $scope.Plans = data;
-        console.info($scope.Plans);
-        //Cache.Set(CacheKeys.Plans, data);
-    });
+    $http.get("/api/product").
+        success(function (response) {
+            $scope.Plans = response.Data;
+            Cache.Set(CacheKeys.Plans, data);
+        });
+
     console.info("HomeController");
     console.info($scope.Plans);
 }])
 .controller('CreateController', ['$scope', function ($scope) {
     $scope.Products = Cache.Get(CacheKeys.Products);
+    $scope.Plan = {
+        ProductType: 0
+    };
 }])
 .controller('DeleteController', ['$scope', function ($scope) { }])
 .controller('EditController', ['$scope', function ($scope) { }])
@@ -21,7 +25,9 @@ angular.module('ngRouteExample', ['ngRoute'])
         Name: "Plan1"
     };
     $http.get("/api/product")
-   .success(function (response) { $scope.Detail.Products = response.Data; });
+   .success(function (response) {
+       $scope.Detail.Products = response.Data;
+   });
 }])
 .config(function ($routeProvider) {
     $routeProvider.
@@ -50,23 +56,16 @@ angular.module('ngRouteExample', ['ngRoute'])
     });
 });
 
-$(function () {
-    Cache.Set(productKey, InitProducts);
-});
 
 var InitProducts = function (fn) {
-    $.getJSON("/api/product", function (response) {
-        if (response.Success) {
-            var result = response.Data;
-            fn(result);
-        };
-    });
+    $.getJSON(
+        "/api/product",
+        function (response) {
+            if (response.Success) {
+                var result = response.Data;
+                fn(result);
+            }
+        });
 }
-var InitPlans = function (fn) {
-    $.getJSON("/api/product", function (response) {
-        if (response.Success) {
-            var result = response.Data;
-            fn(result);
-        };
-    });
-}
+
+Cache.Set(CacheKeys.Products, InitProducts);
