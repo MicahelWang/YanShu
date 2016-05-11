@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/weuicss")
-    <script src="~/Scripts/Dust/dust-full.min.js"></script>
 </head>
 
-<body>
+<body ontouchstart>
     <div class="container" id="container">
     </div>
     @RenderSection("scriptsContainer", required: false)
-
+	<script src="~/Scripts/Dust/dust-full.min.js"></script>
     <script src="~/Scripts/jquery-2.2.3.min.js"></script>
     <script src="~/Scripts/router.min.js"></script>
     @RenderSection("scripts", required: false)
