@@ -242,6 +242,7 @@
     <Compile Include="Services\MenuService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\WxUserService.cs" />
     <Compile Include="Services\WeChatService.cs" />
     <Compile Include="Services\WeixinActionService.cs" />
     <Compile Include="Services\EventService.cs" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using WeChatPortal.Constants;
 using WeChatPortal.Constants.WeChat.Core.Constants;
 using WeChatPortal.Entities.Data;
@@ -26,6 +27,15 @@ namespace WeChatPortal.Services
             var msg = $"微信Post请求发生错误！错误代码：{errorResult.errcode}，说明：{errorResult.errmsg}";
             //发生错误
             throw new SimpleException(100000, msg);
+        }
+
+        protected async Task<T> GetJsonAsync<T>(string url)
+        {
+            return await Get.GetJsonAsync<T>(url, RequestCallBack);
+        }
+        protected async Task<T> PostGetJsonAsync<T>(string url)
+        {
+            return await Post.PostGetJsonAsync<T>(url, RequestCallBack);
         }
 
         protected T GetJson<T>(string url)

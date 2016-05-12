@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using WeChatPortal.Filters;
 using WeChatPortal.Models;
+using WeChatPortal.Services;
 using WeChatPortal.Utils;
 
 namespace WeChatPortal.Controllers
@@ -18,8 +20,13 @@ namespace WeChatPortal.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public async Task<ActionResult> Login(string returnUrl,string openId="")
         {
+            if (openId!="")
+            {
+                UserService userService = new UserService();
+                var user = await userService.GetUser(openId, true);
+            }
             ViewBag.ReturnUrl = returnUrl;
 
             return View();

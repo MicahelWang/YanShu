@@ -76,13 +76,17 @@ namespace WeChatPortal.Utils.HttpUtility
         /// 异步GetJsonA
         /// </summary>
         /// <param name="url"></param>
+        /// <param name="callBack"></param>
         /// <param name="encoding"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static async Task<T> GetJsonAsync<T>(string url, Encoding encoding = null)
+        public static async Task<T> GetJsonAsync<T>(string url, Action<string> callBack, Encoding encoding = null)
         {
             string returnText = await RequestUtility.HttpGetAsync(url, encoding);
-          
+            if (returnText.Contains("errcode"))
+            {
+                callBack?.Invoke(returnText);
+            }
             var result = returnText.DeserializeJson<T>();
             return result;
         }

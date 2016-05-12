@@ -37,7 +37,7 @@ namespace WeChatPortal.Utils.HttpUtility
         /// <typeparam name="T"></typeparam>
         /// <param name="returnText"></param>
         /// <returns></returns>
-        public static T GetResult<T>(string returnText, Action<string> callBack=null)
+        public static T GetResult<T>(string returnText, Action<string> callBack = null)
         {
             //JavaScriptSerializer js = new JavaScriptSerializer();
 
@@ -98,7 +98,7 @@ namespace WeChatPortal.Utils.HttpUtility
         /// <param name="timeOut">代理请求超时时间（毫秒）</param>
         /// <param name="checkValidationResult">验证服务器证书回调自动验证</param>
         /// <returns></returns>
-        public static T PostGetJson<T>(string url, Action<string> callBack,CookieContainer cookieContainer = null, Stream fileStream = null, Encoding encoding = null, int timeOut = 1000, bool checkValidationResult = false)
+        public static T PostGetJson<T>(string url, Action<string> callBack, CookieContainer cookieContainer = null, Stream fileStream = null, Encoding encoding = null, int timeOut = 1000, bool checkValidationResult = false)
         {
             string returnText = RequestUtility.HttpPost(url, cookieContainer, fileStream, null, null, encoding, timeOut: timeOut, checkValidationResult: checkValidationResult);
 
@@ -188,10 +188,10 @@ namespace WeChatPortal.Utils.HttpUtility
         /// <param name="encoding"></param>
         /// <param name="timeOut"></param>
         /// <returns></returns>
-        public static async Task<T> PostGetJsonAsync<T>(string url, CookieContainer cookieContainer = null, Dictionary<string, string> formData = null, Encoding encoding = null, int timeOut = 1000)
+        public static async Task<T> PostGetJsonAsync<T>(string url, Action<string> callBack, CookieContainer cookieContainer = null, Dictionary<string, string> formData = null, Encoding encoding = null, int timeOut = 1000)
         {
             string returnText = await RequestUtility.HttpPostAsync(url, cookieContainer, formData, encoding, timeOut);
-            var result = GetResult<T>(returnText);
+            var result = GetResult<T>(returnText, callBack);
             return result;
         }
 
