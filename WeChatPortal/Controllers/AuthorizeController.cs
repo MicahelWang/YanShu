@@ -23,7 +23,7 @@ namespace WeChatPortal.Controllers
         public async Task<ActionResult> Index(string code, string state)
         {
             var entity = _service.GetAuthorizeEntity(code);
-            Log4NetHelper.WriteLog("Authorize result=" + entity.ToJson());
+            Log4NetHelper.WriteDebug("Authorize result=" + entity.ToJson());
             var user =await _userService.GetUser(entity.openid,true);
             var userData = user.ToJson();
             FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, user.Name, DateTime.Now, DateTime.Now.AddMinutes(30), false, userData);

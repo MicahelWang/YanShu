@@ -178,6 +178,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Areas\Mobile\Controllers\BaseMobileController.cs" />
     <Compile Include="Areas\Mobile\Controllers\OrderController.cs" />
     <Compile Include="Areas\Mobile\Controllers\PlanController.cs" />
     <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
@@ -348,10 +349,8 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Mobile\Views\web.config" />
     <Content Include="Areas\Mobile\Views\Order\Index.cshtml" />
-    <Content Include="Areas\Mobile\Views\Plan\Create.cshtml" />
     <Content Include="Areas\Mobile\Views\Plan\Index.cshtml" />
     <Content Include="Areas\Mobile\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Mobile\Views\Plan\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <Content Include="Scripts\angular\angular-animate.min.js.map" />
     <Content Include="Scripts\angular\angular-aria.min.js.map" />

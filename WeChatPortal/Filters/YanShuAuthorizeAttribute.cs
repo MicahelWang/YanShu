@@ -28,15 +28,18 @@ namespace WeChatPortal.Filters
             if (request.Url == null) return;
             string userAgent = request.UserAgent;
             var currentUrl = request.Url.AbsoluteUri;
+            var tempUrl = currentUrl.UrlEncode();
+            var dataUrl = currentUrl.UrlEncode().AsUrlData();
             string url;
             if (userAgent != null && userAgent.ToLower().Contains("micromessenger"))
             {
                 var returnUrl = DomainUrl+"/Authorize";
-                url = RequestUrl.GetAuthorize(ConfigSetting.AppId, returnUrl.UrlEncode(), "snsapi_base", currentUrl.UrlEncode().AsUrlData());
+                
+                url = RequestUrl.GetAuthorize(ConfigSetting.AppId, returnUrl.UrlEncode(), "snsapi_base", currentUrl.UrlEncode());
             }
             else
             {
-                url = "/Home/Login?ReturnUrl="+currentUrl.UrlEncode().AsUrlData();
+                url = "/Home/Login?ReturnUrl="+currentUrl.UrlEncode();
             }
             filterContext.HttpContext.Response.Redirect(url);
         }

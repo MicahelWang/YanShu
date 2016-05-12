@@ -8,7 +8,7 @@ using WeChatPortal.Filters;
 namespace WeChatPortal.Areas.Mobile.Controllers
 {
     [YanShuAuthorize]
-    public class PlanController : Controller
+    public class PlanController : MobileBaseController
     {
         // GET: Mobile/Plan
         public ActionResult Index()

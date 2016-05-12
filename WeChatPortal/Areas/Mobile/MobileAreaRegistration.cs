@@ -16,8 +16,8 @@ namespace WeChatPortal.Areas.Mobile
         {
             context.MapRoute(
                 "Mobile_default",
-                "Mobile/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                "Mobile/{controller}/{page}/{id}",
+                new { action = "Index", page = UrlParameter.Optional, id = UrlParameter.Optional }
             );
         }
     }

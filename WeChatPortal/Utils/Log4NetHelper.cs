@@ -8,8 +8,9 @@ namespace WeChatPortal.Utils
     public class Log4NetHelper
     {
         //log4net日志专用
-        public static readonly log4net.ILog loginfo = log4net.LogManager.GetLogger("loginfo");
-        public static readonly log4net.ILog logerror = log4net.LogManager.GetLogger("logerror");
+        private static readonly log4net.ILog LogInfo = log4net.LogManager.GetLogger("loginfo");
+        private static readonly log4net.ILog LogError = log4net.LogManager.GetLogger("logerror");
+        private static readonly log4net.ILog LogDebug = log4net.LogManager.GetLogger("logdebug");
 
         static Log4NetHelper()
         {
@@ -32,9 +33,9 @@ namespace WeChatPortal.Utils
         /// <param name="info"></param>
         public static void WriteLog(string info)
         {
-            if (loginfo.IsInfoEnabled)
+            if (LogInfo.IsInfoEnabled)
             {
-                loginfo.Info(info);
+                LogInfo.Info(info);
             }
         }
 
@@ -45,9 +46,21 @@ namespace WeChatPortal.Utils
         /// <param name="se"></param>
         public static void WriteError(string info, Exception se)
         {
-            if (logerror.IsErrorEnabled)
+            if (LogError.IsErrorEnabled)
             {
-                logerror.Error(info, se);
+                LogError.Error(info, se);
+            }
+        }
+
+        /// <summary>
+        /// 调试日志
+        /// </summary>
+        /// <param name="info"></param>
+        public static void WriteDebug(string info)
+        {
+            if (LogDebug.IsDebugEnabled)
+            {
+                LogDebug.Info(info);
             }
         }
     }

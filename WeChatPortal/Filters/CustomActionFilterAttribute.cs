@@ -14,7 +14,7 @@ namespace WeChatPortal.Filters
             string url = request.Url.AbsoluteUri;
             string queryString = request.Url.Query;
             string requestFormat = "Request Url：\r\n{0}";
-            Log4NetHelper.WriteLog(string.Format(requestFormat, url, queryString));
+            Log4NetHelper.WriteDebug(string.Format(requestFormat, url, queryString));
             base.OnActionExecuting(filterContext);
         }
     }
