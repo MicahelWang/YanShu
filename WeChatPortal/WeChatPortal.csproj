@@ -268,6 +268,20 @@
     <Compile Include="Utils\WeChatEncrypt\WxBizMsgCrypt.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\order\CreteController.js" />
+    <Content Include="app\order\IndexController.js" />
+    <Content Include="app\order\DetailController.js" />
+    <Content Include="app\order\app.js" />
+    <Content Include="app\order\_detail.html" />
+    <Content Include="app\order\_create.html" />
+    <Content Include="app\order\_index.html" />
+    <Content Include="app\plan\app.js" />
+    <Content Include="app\plan\CreteController.js" />
+    <Content Include="app\plan\DetailController.js" />
+    <Content Include="app\plan\IndexController.js" />
+    <Content Include="app\plan\_create.html" />
+    <Content Include="app\plan\_detail.html" />
+    <Content Include="app\plan\_index.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
