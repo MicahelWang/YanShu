@@ -18,7 +18,20 @@ namespace WeChatPortal.Controllers
         /// <returns></returns>
         public async Task<CreateQrCodeResult> Post(string sceneId,QrCodeType qrCodeType=QrCodeType.QrScene, int expire= 1800)
         {
-            return await _service.CreateQrCode(sceneId,qrCodeType, expire);
+            var intSceneId = 0;
+            if (int.TryParse(sceneId, out intSceneId))
+            {
+                return await _service.CreateQrCode(intSceneId, qrCodeType, expire);
+            }
+            else
+            {
+                if (qrCodeType == QrCodeType.QrScene)
+                {
+                    throw new ErrorJsonResultException("临时二维码必须为场景编码 Int 类型");
+                }
+                return await _service.CreateQrCode(sceneId);
+            }
+
         }
     }
 }
