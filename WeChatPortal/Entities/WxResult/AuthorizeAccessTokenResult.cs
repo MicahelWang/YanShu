@@ -1,13 +1,6 @@
-﻿namespace WeChatPortal.Entities.Data
+namespace WeChatPortal.Entities.WxResult
 {
-    public class AccessTokenEntity
-    {
-        public string access_token { get; set; }
-
-        public int expires_in { get; set; }
-    }
-
-    public class AuthorizeAccessTokenEntity
+    public class AuthorizeAccessTokenResult
     {
         public string access_token { get; set; }
 

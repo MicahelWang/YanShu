@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using WeChatPortal.Entities.Data;
+using WeChatPortal.Entities.WxResult;
 using WeChatPortal.Services;
 
 namespace WeChatPortal.Controllers
@@ -19,13 +20,13 @@ namespace WeChatPortal.Controllers
             _wxUserService = new WxUserService();
         }
 
-        public async Task<UserEntity> Get(string id = null)
+        public async Task<UserResult> Get(string id = null)
         {
             return await _wxUserService.GetUsers(id);
         }
 
         [AcceptVerbs("Detail")]
-        public async Task<UserDetailEntity> GetUser(string id)
+        public async Task<UserDetailResult> GetUser(string id)
         {
             return await _wxUserService.GetUser(id);
         }

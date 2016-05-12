@@ -2,20 +2,22 @@
 {
     namespace WeChat.Core.Constants
     {
-        //public static class MsgType
-        //{
-        //    public const string Text = "text";
-        //    public const string Image = "image";
-        //    public const string News = "news";
-        //    public const string Voice = "voice";
-        //    public const string Video = "video";
-        //    public const string Music = "music";
-        //    public const string Location = "location";
-        //    public const string Link = "link";
-        //    public const string Event = "event";
-
-        //}
-
+        public enum CommonJsonSendType
+        {
+            GET,
+            POST
+        }
+        public enum QrCodeType
+        {
+            /// <summary>
+            /// 临时二维码
+            /// </summary>
+            QrScene=0,
+            /// <summary>
+            /// 永久二维码
+            /// </summary>
+            QrLimitScene=1
+        }
         public enum ReturnCode
         {
             请求成功 = 0,

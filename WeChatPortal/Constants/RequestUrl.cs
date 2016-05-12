@@ -28,6 +28,10 @@
             return string.Format(AuthorzeUserInfoUrl, appId, token);
         }
         #endregion
+
+        #region Base Token
+
+       
         private const string TokenUrl =
             "https://api.weixin.qq.com/cgi-bin/token?grant_type={0}&appid={1}&secret={2}";
         /// <summary>
@@ -41,6 +45,11 @@
         {
             return string.Format(TokenUrl, grantType, appid, appsecret);
         }
+        #endregion
+
+        #region User
+
+
         private const string UsersUrl =
             "https://api.weixin.qq.com/cgi-bin/user/get?access_token={0}&nextOpenid={1}";
 
@@ -55,18 +64,22 @@
         {
             return string.Format(UsersByOpenIdUrl, token, openid);
         }
-         
+        #endregion
+
+        #region Resources
+
+      
         private const string UploadTempUrl =
             "https://api.weixin.qq.com/cgi-bin/media/upload?access_token={0}&type={1}";
         /// <summary>
-        /// 零食素材上传
+        /// 临时素材上传
         /// </summary>
         /// <param name="token"></param>
         /// <param name="type"></param>
         /// <returns></returns>
         public static string PostUploadTemp(string token, string type)
         {
-            return string.Format(UploadTempUrl, token, token, type);
+            return string.Format(UploadTempUrl, token, type);
         }
         /// <summary>
         /// 新增永久图文素材
@@ -102,5 +115,32 @@
             return string.Format(UploadMaterialUrl, token);
         }
 
+        #endregion
+
+        #region QR Code
+
+        private const string CreateQrCodeUrl = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token={0}";
+
+        /// <summary>
+        /// 生成二维码
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static string PostCreateQrCodeUrl(string token)
+        {
+            return string.Format(CreateQrCodeUrl, token);
+        }
+
+        private const string ShowQrCodeUrl = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={0}";
+        /// <summary>
+        /// 获取QR Code 通过  ticket
+        /// </summary>
+        /// <param name="ticket"> 必须  UrlEncode</param>
+        /// <returns></returns>
+        public static string GetShowQrCodeUrl(string ticket)
+        {
+            return string.Format(ShowQrCodeUrl, ticket);
+        }
+        #endregion
     }
 }

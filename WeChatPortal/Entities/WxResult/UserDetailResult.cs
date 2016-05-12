@@ -1,6 +1,6 @@
-﻿namespace WeChatPortal.Entities.Data
+﻿namespace WeChatPortal.Entities.WxResult
 {
-    public class UserDetailEntity
+    public class UserDetailResult
     {
 
         /// <summary>

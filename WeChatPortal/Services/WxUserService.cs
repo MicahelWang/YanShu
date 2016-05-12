@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using WeChatPortal.Constants;
 using WeChatPortal.Entities.Data;
+using WeChatPortal.Entities.WxResult;
 
 namespace WeChatPortal.Services
 {
@@ -9,16 +10,16 @@ namespace WeChatPortal.Services
         public WxUserService() : base()
         {
         }
-        public async Task<UserDetailEntity> GetUser(string openId)
+        public async Task<UserDetailResult> GetUser(string openId)
         {
             var url = RequestUrl.GetUsersByOpenId(this.Token, openId);
-            return await GetJsonAsync<UserDetailEntity>(url);
+            return await GetJsonAsync<UserDetailResult>(url);
         }
 
-        public async Task<UserEntity> GetUsers(string nextOpenid)
+        public async Task<UserResult> GetUsers(string nextOpenid)
         {
             var url = RequestUrl.GetUsers(this.Token, nextOpenid);
-            return await GetJsonAsync<UserEntity>(url);
+            return await GetJsonAsync<UserResult>(url);
         }
 
 

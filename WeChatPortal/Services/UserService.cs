@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WeChatPortal.Constants;
 using WeChatPortal.Entities.Data;
+using WeChatPortal.Entities.WxResult;
 using WeChatPortal.Models;
 
 namespace WeChatPortal.Services
@@ -21,7 +22,7 @@ namespace WeChatPortal.Services
             return await Task.FromResult(entity);
         }
 
-        protected async Task<User> AddUser(UserDetailEntity entity)
+        protected async Task<User> AddUser(UserDetailResult entity)
         {
             var user = new User
             {

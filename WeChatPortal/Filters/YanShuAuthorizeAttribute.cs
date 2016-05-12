@@ -11,7 +11,7 @@ namespace WeChatPortal.Filters
     [AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = true)]
     sealed class YanShuAuthorizeAttribute : AuthorizeAttribute
     {
-        private static string _domainUrl = ConfigSetting.HostUrl;
+        private static readonly string DomainUrl = ConfigSetting.HostUrl;
         public YanShuAuthorizeAttribute()
         {
         }
@@ -31,12 +31,12 @@ namespace WeChatPortal.Filters
             string url;
             if (userAgent != null && userAgent.ToLower().Contains("micromessenger"))
             {
-                var returnUrl = _domainUrl+"/Authorize";
-                url = RequestUrl.GetAuthorize(ConfigSetting.AppId, returnUrl.UrlEncode(), "snsapi_base", currentUrl.UrlEncode());
+                var returnUrl = DomainUrl+"/Authorize";
+                url = RequestUrl.GetAuthorize(ConfigSetting.AppId, returnUrl.UrlEncode(), "snsapi_base", currentUrl.UrlEncode().AsUrlData());
             }
             else
             {
-                url = "/Home/Login?ReturnUrl="+currentUrl.UrlEncode();
+                url = "/Home/Login?ReturnUrl="+currentUrl.UrlEncode().AsUrlData();
             }
             filterContext.HttpContext.Response.Redirect(url);
         }

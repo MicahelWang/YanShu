@@ -144,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\ErrorJsonResultException.cs" />
     <Compile Include="App_Start\SimpleException.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="Areas\Mobile\Controllers\OrderController.cs" />
     <Compile Include="Areas\Mobile\Controllers\PlanController.cs" />
     <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
+    <Compile Include="Constants\Config.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Constants\CacheKey.cs" />
     <Compile Include="Constants\Enums.cs" />
@@ -187,15 +189,18 @@
     <Compile Include="Controllers\AuthorizeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\QrCodeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WeChatController.cs" />
     <Compile Include="Entities\Data\ArticleEntity.cs" />
-    <Compile Include="Entities\Data\AccessTokenEntity.cs" />
+    <Compile Include="Entities\WxResult\AccessTokenResult.cs" />
+    <Compile Include="Entities\WxResult\AuthorizeAccessTokenResult.cs" />
+    <Compile Include="Entities\WxResult\CreateQrCodeResult.cs" />
     <Compile Include="Entities\Data\ResponseEntity.cs" />
-    <Compile Include="Entities\Data\UserData.cs" />
-    <Compile Include="Entities\Data\UserDetailEntity.cs" />
-    <Compile Include="Entities\Data\UserEntity.cs" />
-    <Compile Include="Entities\Data\WxJsonResult.cs" />
+    <Compile Include="Entities\WxResult\UserDataResult.cs" />
+    <Compile Include="Entities\WxResult\UserDetailResult.cs" />
+    <Compile Include="Entities\WxResult\UserResult.cs" />
+    <Compile Include="Entities\WxResult\WxJsonResult.cs" />
     <Compile Include="Entities\Data\RequesEntity.cs" />
     <Compile Include="Entities\Data\ImageEntity.cs" />
     <Compile Include="Entities\Data\MusicEntity.cs" />
@@ -242,6 +247,7 @@
     <Compile Include="Services\MenuService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\WxQrCodeService.cs" />
     <Compile Include="Services\WxUserService.cs" />
     <Compile Include="Services\WeChatService.cs" />
     <Compile Include="Services\WeixinActionService.cs" />
@@ -252,6 +258,7 @@
     <Compile Include="Utils\Helpers\DateTimeHelper.cs" />
     <Compile Include="Utils\Helpers\FileHelper.cs" />
     <Compile Include="Utils\Helpers\SerializerHelper.cs" />
+    <Compile Include="Utils\HttpUtility\CommonJsonSend.cs" />
     <Compile Include="Utils\HttpUtility\Get.cs" />
     <Compile Include="Utils\HttpUtility\Post.cs" />
     <Compile Include="Utils\HttpUtility\RequestUtility.cs" />

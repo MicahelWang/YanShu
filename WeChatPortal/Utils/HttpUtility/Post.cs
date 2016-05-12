@@ -26,6 +26,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using WeChatPortal.Constants;
 
 namespace WeChatPortal.Utils.HttpUtility
 {
@@ -76,7 +77,7 @@ namespace WeChatPortal.Utils.HttpUtility
         /// <param name="fileDictionary"></param>
         /// <param name="postDataDictionary"></param>
         /// <returns></returns>
-        public static T PostFileGetJson<T>(string url, CookieContainer cookieContainer = null, Dictionary<string, string> fileDictionary = null, Dictionary<string, string> postDataDictionary = null, Encoding encoding = null, int timeOut = 1000)
+        public static T PostFileGetJson<T>(string url, CookieContainer cookieContainer = null, Dictionary<string, string> fileDictionary = null, Dictionary<string, string> postDataDictionary = null, Encoding encoding = null,  int timeOut = Config.TIME_OUT)
         {
             using (MemoryStream ms = new MemoryStream())
             {
@@ -98,7 +99,7 @@ namespace WeChatPortal.Utils.HttpUtility
         /// <param name="timeOut">代理请求超时时间（毫秒）</param>
         /// <param name="checkValidationResult">验证服务器证书回调自动验证</param>
         /// <returns></returns>
-        public static T PostGetJson<T>(string url, Action<string> callBack, CookieContainer cookieContainer = null, Stream fileStream = null, Encoding encoding = null, int timeOut = 1000, bool checkValidationResult = false)
+        public static T PostGetJson<T>(string url, Action<string> callBack, CookieContainer cookieContainer = null, Stream fileStream = null, Encoding encoding = null,  int timeOut = Config.TIME_OUT, bool checkValidationResult = false)
         {
             string returnText = RequestUtility.HttpPost(url, cookieContainer, fileStream, null, null, encoding, timeOut: timeOut, checkValidationResult: checkValidationResult);
 
@@ -116,7 +117,7 @@ namespace WeChatPortal.Utils.HttpUtility
         /// <param name="timeOut"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static T PostGetJson<T>(string url, CookieContainer cookieContainer = null, Dictionary<string, string> formData = null, Encoding encoding = null, int timeOut = 1000)
+        public static T PostGetJson<T>(string url, CookieContainer cookieContainer = null, Dictionary<string, string> formData = null, Encoding encoding = null,  int timeOut = Config.TIME_OUT)
         {
             string returnText = RequestUtility.HttpPost(url, cookieContainer, formData, encoding, timeOut: timeOut);
             var result = GetResult<T>(returnText);
@@ -153,7 +154,7 @@ namespace WeChatPortal.Utils.HttpUtility
         /// <param name="encoding"></param>
         /// <param name="timeOut"></param>
         /// <returns></returns>
-        public static async Task<T> PostFileGetJsonAsync<T>(string url, CookieContainer cookieContainer = null, Dictionary<string, string> fileDictionary = null, Encoding encoding = null, int timeOut = 1000)
+        public static async Task<T> PostFileGetJsonAsync<T>(string url, CookieContainer cookieContainer = null, Dictionary<string, string> fileDictionary = null, Encoding encoding = null,  int timeOut = Config.TIME_OUT)
         {
             string returnText = await RequestUtility.HttpPostAsync(url, cookieContainer, null, fileDictionary, null, encoding, timeOut);
             var result = GetResult<T>(returnText);
@@ -171,7 +172,7 @@ namespace WeChatPortal.Utils.HttpUtility
         /// <param name="timeOut"></param>
         /// <param name="checkValidationResult"></param>
         /// <returns></returns>
-        public static async Task<T> PostGetJsonAsync<T>(string url, CookieContainer cookieContainer = null, Stream fileStream = null, Encoding encoding = null, int timeOut = 1000, bool checkValidationResult = false)
+        public static async Task<T> PostGetJsonAsync<T>(string url, CookieContainer cookieContainer = null, Stream fileStream = null, Encoding encoding = null,  int timeOut = Config.TIME_OUT, bool checkValidationResult = false)
         {
             string returnText = await RequestUtility.HttpPostAsync(url, cookieContainer, fileStream, null, null, encoding, timeOut, checkValidationResult: checkValidationResult);
             var result = GetResult<T>(returnText);
@@ -188,7 +189,7 @@ namespace WeChatPortal.Utils.HttpUtility
         /// <param name="encoding"></param>
         /// <param name="timeOut"></param>
         /// <returns></returns>
-        public static async Task<T> PostGetJsonAsync<T>(string url, Action<string> callBack, CookieContainer cookieContainer = null, Dictionary<string, string> formData = null, Encoding encoding = null, int timeOut = 1000)
+        public static async Task<T> PostGetJsonAsync<T>(string url, Action<string> callBack, CookieContainer cookieContainer = null, Dictionary<string, string> formData = null, Encoding encoding = null,  int timeOut = Config.TIME_OUT)
         {
             string returnText = await RequestUtility.HttpPostAsync(url, cookieContainer, formData, encoding, timeOut);
             var result = GetResult<T>(returnText, callBack);
