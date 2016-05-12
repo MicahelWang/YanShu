@@ -5,7 +5,7 @@ namespace WeChatPortal.Models
     public class LoginModel
     {
         [Required]
-        [Display(Name = "电子邮电")]
+        [Display(Name = "用户名")]
         public string UserName { get; set; }
 
         [Required]
