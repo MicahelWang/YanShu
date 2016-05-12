@@ -4,7 +4,7 @@ angular.module('ngPlanApp', ['ngRoute'])
     $http.get("/api/product").
         success(function (response) {
             $scope.Plans = response.Data;
-            Cache.Set(CacheKeys.Plans, data);
+            Cache.Set(CacheKeys.Plans, response.Data);
         });
 
     console.info("HomeController");
