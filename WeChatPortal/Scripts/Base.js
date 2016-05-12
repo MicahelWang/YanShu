@@ -27,7 +27,6 @@ var planKey = "Plans";
 
 var Cache = {
     Get: function (key) {
-        console.log("Cache Get Key=" + key);
         var result = localStorage.getItem(key);
         return eval(result);
     },
@@ -35,7 +34,6 @@ var Cache = {
         if ($.isFunction(value)) {
             if (typeof localStorage[key] === 'undefined') {
                 value(function (response) {
-                    console.log(response);
                     //var json = JSON.stringify(response);
                     //localStorage.setItem(key, json);
                     Cache.Set(key, response);
@@ -44,7 +42,6 @@ var Cache = {
 
         } else {
             var json = JSON.stringify(value);
-            console.log("Cache Set Key=" + key + ",Value=" + json);
             localStorage.setItem(key, json);
         }
 

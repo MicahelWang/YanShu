@@ -24,7 +24,6 @@
             Age: "",
             Sex: 0
         };
-        console.log(productName);
         $scope.Cancel = function () {
             history.go(-1);
         }

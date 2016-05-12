@@ -6,7 +6,5 @@
                 $scope.Plans = response.Data;
                 Cache.Set(CacheKeys.Plans, response.Data);
             });
-        console.info("HomeController");
-        console.info($scope.Plans);
     }
 ]);
