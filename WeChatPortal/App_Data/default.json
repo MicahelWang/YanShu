@@ -32,7 +32,7 @@
 		{
 			"type": "view",
 			"name": "计划书",
-			"url": "http://51yanshu.8866.org/Mobile/Plan/#/Create"
+			"url": "http://51yanshu.8866.org/Mobile/Plan/Create"
 		},
         {
           "type": "click",
