@@ -1,20 +1,163 @@
-﻿<div class="bd">
+﻿
 
-	<div class="weui_cells_title">制作计划书</div>
-	<div class="weui_cells weui_cells_radio">
-		<label class="weui_cell weui_check_label" for="Item_{{Item.ID}}" ng-repeat="Item in Products">
-			<div class="weui_cell_bd weui_cell_primary">
-				<p>{{Item.Name}}</p>
-			</div>
-			<div class="weui_cell_ft">
-				<input type="radio" class="weui_check" name="radio1" id="Item_{{Item.ID}}" value="{{Item.ID}}" ng-model="Plan.ProductType">
-				<span class="weui_icon_checked"></span>
-			</div>
-		</label>
+<div class="cell" ng-hide="CreateSuccess">
+	<div class="hd">
+		<h1 class="page_title">制作计划书</h1>
 	</div>
-	{{Plan.ProductType}}
-	<div class="bd">
-		<a href="javascript:;" class="weui_btn weui_btn_primary">下一步</a>
+	<div class="bd" ng-hide="SelectedProduct">
 
+
+		<div class="weui_cells_title">选择产品</div>
+
+		<div class="weui_cells weui_cells_radio">
+			<label class="weui_cell weui_check_label" for="Item_{{Item.ID}}" ng-repeat="Item in Products">
+				<div class="weui_cell_bd weui_cell_primary">
+					<p>{{Item.Name}}</p>
+				</div>
+				<div class="weui_cell_ft">
+					<input type="radio" class="weui_check" name="radio1" id="Item_{{Item.ID}}" value="{{Item.ID}}" ng-model="CreatePlan.ProductType">
+					<span class="weui_icon_checked"></span>
+				</div>
+			</label>
+
+
+		</div>
+		<div class="weui_btn_area">
+			<button class="weui_btn weui_btn_primary" ng-click="NextStep()" id="btnNextStep">下一步</button>
+		</div>
+	</div>
+	<div class="bd" ng-show="SelectedProduct">
+		<div class="weui_cells_title">投保人信息</div>
+		<div class="weui_cells weui_cells_form">
+			<div class="weui_cell">
+				<div class="weui_cell_hd">
+					<label class="weui_label">姓名</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="text" ng-model="CreatePlan.UserName" placeholder="请输入投保人姓名">
+				</div>
+			</div>
+			<div class="weui_cell">
+				<div class="weui_cell_hd">
+					<label class="weui_label">身份证</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="text" ng-model="CreatePlan.IdCardNo" pattern="[0-9xX]*" placeholder="请输入身份证号码">
+				</div>
+			</div>
+			<div class="weui_cell">
+				<div class="weui_cell_hd">
+					<label class="weui_label">年龄</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="number" pattern="[0-9]*" ng-model="CreatePlan.Age" placeholder="请输入投保人年龄">
+				</div>
+			</div>
+			<div class="weui_cell weui_cell_select weui_select_after">
+				<div class="weui_cell_hd">
+					<label for="" class="weui_label">性别</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<select class="weui_select" name="select2" ng-model="CreatePlan.Sex">
+						<option value="0">请选择</option>
+						<option value="1">男</option>
+						<option value="2">女</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="weui_cells_title">投保信息</div>
+		<div class="weui_cells weui_cells_form">
+			<div class="weui_cell">
+				<div class="weui_cell_hd">
+					<label for="" class="weui_label">卡号</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="number" pattern="[0-9]*" value="weui input error" placeholder="请输入卡号">
+				</div>
+				<div class="weui_cell_ft">
+					<i class="weui_icon_warn"></i>
+				</div>
+			</div>
+			<div class="weui_cell">
+				<div class="weui_cell_hd">
+					<label for="" class="weui_label">日期</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="date" value="">
+				</div>
+			</div>
+			<div class="weui_cell">
+				<div class="weui_cell_hd">
+					<label for="" class="weui_label">时间</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="datetime-local" value="" placeholder="">
+				</div>
+			</div>
+		</div>
+		<div class="weui_cells_title">联系人信息</div>
+
+		<div class="weui_cells weui_cells_form">
+			<div class="weui_cell">
+				<div class="weui_cell_hd">
+					<label for="" class="weui_label">姓名</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="text" ng-model="CreatePlan.ContactName" placeholder="请输入联系人姓名">
+				</div>
+				<div class="weui_cell_ft">
+					<i class="weui_icon_warn"></i>
+				</div>
+			</div>
+			<div class="weui_cell">
+				<div class="weui_cell_hd">
+					<label for="" class="weui_label">电话</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="number" pattern="[0-9]*" ng-model="CreatePlan.ContactPhone" placeholder="请输入联系人电话">
+				</div>
+			</div>
+		</div>
+		<div class="weui_cells_title">其他</div>
+		<div class="weui_cells">
+			<div class="weui_cell weui_cell_select weui_select_after">
+				<div class="weui_cell_hd">
+					<label for="" class="weui_label">地区</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<select class="weui_select" name="select2">
+						<option value="1">上海</option>
+						<option value="2">北京</option>
+						<option value="3">杭州</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="weui_opr_area">
+			<p class="weui_btn_area">
+				<a href="javascript:;" ng-click="Create()" class="weui_btn weui_btn_primary">确定</a>
+				<a href="javascript:;" ng-click="Reset()" class="weui_btn weui_btn_default">取消</a>
+			</p>
+		</div>
+	</div>
+</div>
+
+<div class="msg" ng-show="CreateSuccess" >
+	<div class="weui_msg">
+		<div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg"></i></div>
+		<div class="weui_text_area">
+			<h2 class="weui_msg_title">操作成功</h2>
+			<p class="weui_msg_desc">内容详情，可根据实际需要安排</p>
+		</div>
+		<div class="weui_opr_area">
+			<p class="weui_btn_area">
+				<a href="#/" class="weui_btn weui_btn_primary">确定</a>
+				<a href="javascript:history.go(-1);" class="weui_btn weui_btn_default">取消</a>
+			</p>
+		</div>
+		<div class="weui_extra_area">
+			<a href="">查看详情</a>
+		</div>
 	</div>
 </div>

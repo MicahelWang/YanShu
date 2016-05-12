@@ -11,7 +11,7 @@ namespace WeChatPortal.Filters
     [AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = true)]
     sealed class YanShuAuthorizeAttribute : AuthorizeAttribute
     {
-        private static string domainUrl = string.Empty;
+        private static string _domainUrl = ConfigSetting.HostUrl;
         public YanShuAuthorizeAttribute()
         {
         }
@@ -24,29 +24,21 @@ namespace WeChatPortal.Filters
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             if (filterContext.HttpContext.Request.IsAuthenticated) return;
-
             var request = filterContext.RequestContext.HttpContext.Request;
-            if (request.Url != null)
+            if (request.Url == null) return;
+            string userAgent = request.UserAgent;
+            var currentUrl = request.Url.AbsoluteUri;
+            string url;
+            if (userAgent != null && userAgent.ToLower().Contains("micromessenger"))
             {
-                if (domainUrl==string.Empty)
-                {
-                    domainUrl = request.Url.Scheme+"://"+request.Url.Authority;
-                }
-                string userAgent = request.UserAgent;
-                var currentUrl = request.Url.AbsoluteUri;
-                string url;
-                if (userAgent != null && userAgent.ToLower().Contains("micromessenger"))
-                {
-                    var returnUrl = domainUrl+"/Authorize";
-                    url = RequestUrl.GetAuthorize(ConfigSetting.AppId, returnUrl.UrlEncode(), "snsapi_base", currentUrl.UrlEncode());
-                }
-                else
-                {
-                    url = "/Home/Login?ReturnUrl="+currentUrl.UrlEncode();
-                }
-
-                filterContext.HttpContext.Response.Redirect(url);
+                var returnUrl = _domainUrl+"/Authorize";
+                url = RequestUrl.GetAuthorize(ConfigSetting.AppId, returnUrl.UrlEncode(), "snsapi_base", currentUrl.UrlEncode());
             }
+            else
+            {
+                url = "/Home/Login?ReturnUrl="+currentUrl.UrlEncode();
+            }
+            filterContext.HttpContext.Response.Redirect(url);
         }
     }
 }

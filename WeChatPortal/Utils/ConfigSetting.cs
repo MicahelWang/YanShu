@@ -106,11 +106,12 @@ namespace WeChatPortal.Utils
         private const string AppSecretKey = "AppSecret";
         private const string EncodingAesKeyName = "EncodingAesKey";
         private const string EncryptKey = "Encrypt";
+        private const string HostUrlKey = "HostUrl";
 
         #region Public Properties
 
         public static string AppId => GetString(AppIdKey, "");
-
+        public static string HostUrl => GetString(HostUrlKey, "");
 
         public static string AppSecret => GetString(AppSecretKey, "");
         public static string Token => GetString(TokenKey, "");
