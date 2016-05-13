@@ -34,6 +34,10 @@ namespace WeChatPortal.Utils
 
         public static object ToXml(this object input, bool allowNull = false)
         {
+            if (input==null)
+            {
+                return null;
+            }
             var type = input.GetType();
             var rootName = type.GetTypeName("xml");
             return input.ToXml(allowNull, rootName);

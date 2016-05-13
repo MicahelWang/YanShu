@@ -1,6 +1,4 @@
-﻿
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using WeChatPortal.Utils;
 
 namespace WeChatPortal.Filters
@@ -11,10 +9,13 @@ namespace WeChatPortal.Filters
         {
             base.OnActionExecuting(filterContext);
             var request = filterContext.RequestContext.HttpContext.Request;
-            string url = request.Url.AbsoluteUri;
-            string queryString = request.Url.Query;
-            string requestFormat = "Request Url：\r\n{0}";
-            Log4NetHelper.WriteDebug(string.Format(requestFormat, url, queryString));
+            if (request.Url != null)
+            {
+                var url = request.Url.AbsoluteUri;
+                var queryString = request.Url.Query;
+                var requestFormat = "Request Url：\r\n{0}";
+                Log4NetHelper.WriteDebug(string.Format(requestFormat, url, queryString));
+            }
             base.OnActionExecuting(filterContext);
         }
     }

@@ -7,10 +7,10 @@ using WeChatPortal.Entities.XmlModels.Response;
 
 namespace WeChatPortal.Services
 {
-    public class WeixinActionService 
+    public class WeixinActionService
     {
         private readonly EventService _eventService;
-        private const string Msg = "我不明白您在做做什么.";
+        private const string Msg = "我不明白您在做什么.";
         public WeixinActionService()
         {
             _eventService = new EventService();
@@ -90,7 +90,7 @@ namespace WeChatPortal.Services
 
         public BaseMessage HandleEventClick(RequestEvent info)
         {
-
+            BaseMessage response = null;
             EventType eventType = (EventType)Enum.Parse(typeof(EventType), info.Event, true);
             switch (eventType)
             {
@@ -104,18 +104,12 @@ namespace WeChatPortal.Services
                     break;
                 case EventType.Click:
                     return _eventService.ClickEvent(info);
-                    break;
                 case EventType.View:
                     break;
                 default:
                     break;
             }
-            var response = new ResponseText(info)
-            {
-                Content = Msg
-            };
-
-            return response;
+            return response ?? (new ResponseText(info){Content = Msg});
         }
     }
 }

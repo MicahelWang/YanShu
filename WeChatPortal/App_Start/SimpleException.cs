@@ -21,7 +21,7 @@ namespace WeChatPortal
             ErrorCode = errorCode;
         }
 
-        public SimpleException(Exception inner) : this("不明确的异常", inner)
+        public SimpleException(Exception inner) : this(inner.Message, inner)
         {
         }
 

@@ -17,7 +17,7 @@ namespace WeChatPortal.Filters
                 ViewData = filterContext.Controller.ViewData,
             };
            
-            HttpRequestBase bases = filterContext.HttpContext.Request;
+            var bases = filterContext.HttpContext.Request;
             var auroreException = filterContext.Exception as SimpleException;
             var exception = auroreException ?? new SimpleException(filterContext.Exception);
             Log4NetHelper.WriteError("\r\n客户机IP:" + bases.UserHostAddress + "\r\n错误地址:" + bases.Url + "\r\n异常信息:" + exception.Message, exception);

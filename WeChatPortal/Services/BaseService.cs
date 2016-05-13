@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using WeChatPortal.Constants;
 using WeChatPortal.Constants.WeChat.Core.Constants;
-using WeChatPortal.Entities.Data;
 using WeChatPortal.Entities.WxResult;
 using WeChatPortal.Utils;
 using WeChatPortal.Utils.Caching;
@@ -34,16 +33,8 @@ namespace WeChatPortal.Services
         {
             return await Get.GetJsonAsync<T>(url, RequestCallBack);
         }
-        protected async Task<T> PostGetJsonAsync<T>(string url, object args)
-        {
-            if (args != null)
-            {
-                var type = args.GetType();
-            }
-            return await Post.PostGetJsonAsync<T>(url, RequestCallBack);
-        }
 
-        protected async Task<T> PostSendJson<T>(string url,object data)
+        protected async Task<T> PostSendJson<T>(string url, object data)
         {
             return await CommonJsonSend.SendAsync<T>(string.Empty, url, data, RequestCallBack);
         }

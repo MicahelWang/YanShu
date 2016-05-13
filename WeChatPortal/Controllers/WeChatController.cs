@@ -3,7 +3,6 @@ using System.Text;
 using System.Web;
 using System.Web.Http;
 using System.Xml;
-using WeChat.Core.XmlModels;
 using WeChatPortal.Entities.XmlModels;
 using WeChatPortal.Filters;
 using WeChatPortal.Services;

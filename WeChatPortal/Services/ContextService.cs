@@ -16,7 +16,7 @@ namespace WeChatPortal.Services
 
         public Article GetContextByKey(string key)
         {
-            var context = _db.Article.Include(".ArticleContent.Content").FirstOrDefault(m => string.Equals(m.KeyName, key, StringComparison.CurrentCultureIgnoreCase));
+            var context = _db.Article.Include("ArticleContent.Content").FirstOrDefault(m => m.KeyName==key);
             return context;
         }
 
@@ -25,6 +25,10 @@ namespace WeChatPortal.Services
             if (string.Equals(request.Event, EventType.Click.ToString(), StringComparison.CurrentCultureIgnoreCase))
             {
                 var eventContext = GetContextByKey(request.EventKey);
+                if (eventContext==null)
+                {
+                    return null;
+                }
                 switch (eventContext.MsgType)
                 {
                     case (int)ResponseType.News:

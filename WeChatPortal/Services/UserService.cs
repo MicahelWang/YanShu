@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WeChatPortal.Constants;
-using WeChatPortal.Entities.Data;
 using WeChatPortal.Entities.WxResult;
 using WeChatPortal.Models;
 
@@ -12,9 +10,7 @@ namespace WeChatPortal.Services
     public class UserService : BaseService
     {
         private readonly InsuranceDb _db = new InsuranceDb();
-        public UserService() : base()
-        {
-        }
+
         public async Task<User> AddUser(User entity)
         {
             _db.User.Add(entity);
