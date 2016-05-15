@@ -9,6 +9,7 @@ namespace WeChatPortal.Controllers
     public class QrCodeController : ApiController
     {
         private readonly WxQrCodeService _service = new WxQrCodeService();
+
         /// <summary>
         /// 生成二维码
         /// </summary>
