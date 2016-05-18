@@ -32,7 +32,7 @@
 		{
 			"type": "view",
 			"name": "计划书",
-			"url": "http://51yanshu.8866.org/Mobile/Plan/Create"
+			"url": "http://www.51yanshu.com/Mobile/Plan/Create"
 		},
         {
           "type": "click",
@@ -47,12 +47,12 @@
 		{
 			"type": "view",
 			"name": "我的订单",
-			"url": "http://51yanshu.8866.org/Mobile/Order"
+			"url": "http://www.51yanshu.com/Mobile/Order"
 		},
         {
            "type": "view",
           "name": "我的计划书",
-          "url": "http://51yanshu.8866.org/Mobile/Plan"
+          "url": "http://www.51yanshu.com/Mobile/Plan"
         }
       ]
     }
