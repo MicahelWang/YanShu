@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Xml;
 using WeChatPortal.Constants.WeChat.Core.Constants;
 using WeChatPortal.Entities.XmlModels;
@@ -15,9 +16,9 @@ namespace WeChatPortal.Services
         {
             _weixinAction = new WeixinActionService();
         }
-        public BaseMessage Execute(XmlDocument document)
+        public Task<BaseMessage> Execute(XmlDocument document)
         {
-            BaseMessage response;
+            Task<BaseMessage> response;
             MsgType msgType = document.GetMsgType();
             switch (msgType)
             {

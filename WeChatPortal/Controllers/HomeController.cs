@@ -25,7 +25,7 @@ namespace WeChatPortal.Controllers
             if (openId!="")
             {
                 UserService userService = new UserService();
-                var user = await userService.GetUser(openId, true);
+                var user = await userService.GetUser(openId);
             }
             ViewBag.ReturnUrl = returnUrl;
 

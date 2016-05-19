@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using WeChat.Core.XmlModels;
 using WeChatPortal.Constants.WeChat.Core.Constants;
 using WeChatPortal.Entities.XmlModels;
@@ -16,100 +17,106 @@ namespace WeChatPortal.Services
             _eventService = new EventService();
         }
 
-        public BaseMessage HandleText(RequestText info)
+        public Task<BaseMessage> HandleText(RequestText info)
         {
 
-            var response = new ResponseText(info)
+            BaseMessage response = new ResponseText(info)
             {
                 Content = Msg
             };
-            return response;
+            return Task.FromResult(response);
 
         }
 
-        public BaseMessage HandleImage(RequestImage info)
+        public Task<BaseMessage> HandleImage(RequestImage info)
         {
 
-            var response = new ResponseText(info)
+            BaseMessage response = new ResponseText(info)
             {
                 Content = Msg
             };
-            return response;
+            return Task.FromResult(response); 
 
         }
-        public BaseMessage HandleVoice(RequestVoice info)
+        public Task<BaseMessage> HandleVoice(RequestVoice info)
         {
 
-            var response = new ResponseText(info)
+            BaseMessage response = new ResponseText(info)
             {
                 Content = Msg
             };
-            return response;
+            return Task.FromResult(response); 
 
         }
 
-        public BaseMessage HandleVideo(RequestVideo info)
+        public Task<BaseMessage> HandleVideo(RequestVideo info)
         {
 
-            var response = new ResponseText(info)
+            BaseMessage response = new ResponseText(info)
             {
                 Content = Msg
             };
-            return response;
+            return Task.FromResult(response);
         }
 
-        public BaseMessage HandleShortVideo(RequestVideo info)
+        public Task<BaseMessage> HandleShortVideo(RequestVideo info)
         {
 
-            var response = new ResponseText(info)
+            BaseMessage response = new ResponseText(info)
             {
                 Content = Msg
             };
-            return response;
+            return Task.FromResult(response);
         }
 
-        public BaseMessage HandleLocation(RequestLocation info)
+        public Task<BaseMessage> HandleLocation(RequestLocation info)
         {
 
-            var response = new ResponseText(info)
+            BaseMessage response = new ResponseText(info)
             {
                 Content = Msg
             };
-            return response;
+            return Task.FromResult(response);
         }
 
-        public BaseMessage HandleLink(RequestLink info)
+        public Task<BaseMessage> HandleLink(RequestLink info)
         {
 
-            var response = new ResponseText(info)
+            BaseMessage response = new ResponseText(info)
             {
                 Content = Msg
             };
-            return response;
+            return Task.FromResult(response);
         }
 
-        public BaseMessage HandleEventClick(RequestEvent info)
+        public Task<BaseMessage> HandleEventClick(RequestEvent info)
         {
-            BaseMessage response = null;
+            Task<BaseMessage> response = null;
             EventType eventType = (EventType)Enum.Parse(typeof(EventType), info.Event, true);
             switch (eventType)
             {
                 case EventType.Subscribe:
+                    response = _eventService.SubscribeEvent(info);
                     break;
                 case EventType.Unsubscribe:
+                    response = _eventService.UnsubscribeEvent(info);
                     break;
                 case EventType.Scan:
                     break;
                 case EventType.Location:
                     break;
                 case EventType.Click:
-                    return _eventService.ClickEvent(info);
+                    response= _eventService.ClickEvent(info);
+                    break;
                 case EventType.View:
                     break;
                 default:
                     break;
             }
-            return response ?? (new ResponseText(info){Content = Msg});
+            if (response != null) return response;
+            BaseMessage msg = (new ResponseText(info) {Content = Msg});
+            response = Task.FromResult(msg);
+            return response;
         }
     }
 }

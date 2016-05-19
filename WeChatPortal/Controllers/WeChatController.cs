@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Xml;
@@ -35,14 +36,14 @@ namespace WeChatPortal.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage Post()
+        public async Task<HttpResponseMessage> Post()
         {
             //var request = new RequesEntity {signature = signature,timestamp = timestamp,nonce =nonce,echostr = echostr};
             var xmlDoc = new XmlDocument();
             xmlDoc.Load(HttpContext.Current.Request.InputStream);
             var document = WeChatXmlHelper.Execute(xmlDoc, null);
             Log4NetHelper.WriteLog("request:\r\n" + document.ConvertToString());
-            BaseMessage response = _chatService.Execute(document);
+            BaseMessage response = await _chatService.Execute(document);
             Log4NetHelper.WriteLog("response：\r\n" + response.ToXml());
             return response.XmlResponse();
         }

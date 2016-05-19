@@ -38,6 +38,10 @@ namespace WeChatPortal.Filters
             base.OnActionExecuted(actionExecutedContext);
             if (NeedExcute)
             {
+                if (actionExecutedContext.Exception!=null)
+                {
+                    throw actionExecutedContext.Exception;
+                }
                 var result = new ResponseEntity<object>
                 {
                     Success = actionExecutedContext.ActionContext.Response.StatusCode == HttpStatusCode.OK,
