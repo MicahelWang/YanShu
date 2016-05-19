@@ -22,7 +22,7 @@ namespace WeChatPortal.Services
             }
             else if (errorResult.errcode == (int)ReturnCode.不合法的凭证类型)
             {
-                GetToken();
+                CacheManager.Remove(CacheKey.AccessToken);
             }
             var msg = $"微信Post请求发生错误！错误代码：{errorResult.errcode}，说明：{errorResult.errmsg}";
             //发生错误
@@ -56,27 +56,12 @@ namespace WeChatPortal.Services
         {
             CacheManager = new CacheManager();
         }
-        private void GetToken()
+        private string GetToken()
         {
-            const string key = CacheKey.AccessToken;
             var url = RequestUrl.GetToken(ConfigSetting.AppId, ConfigSetting.AppSecret);
             var obj = GetJson<AccessTokenResult>(url);
-            var token = obj.access_token;
-            CacheManager.Set(key, token, DateTime.Now.AddSeconds(obj.expires_in), TimeSpan.Zero);
+            return obj.access_token;
         }
-
-        protected string Token
-        {
-            get
-            {
-                const string key = CacheKey.AccessToken;
-                if (!CacheManager.IsSet(key))
-                    GetToken();
-                return CacheManager.Get(key).ToString();
-
-            }
-        }
-
-
+        protected string Token => CacheManager.Get(CacheKey.AccessToken, GetToken, DateTime.Now.AddSeconds(7200), TimeSpan.Zero);
     }
 }
