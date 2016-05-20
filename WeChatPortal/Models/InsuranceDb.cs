@@ -82,10 +82,10 @@ namespace WeChatPortal.Models
                 .WithOptional(e => e.User)
                 .HasForeignKey(e => e.UpdatedBy);
 
-            modelBuilder.Entity<User>()
-                .HasMany(e => e.User1)
-                .WithOptional(e => e.User2)
-                .HasForeignKey(e => e.ParentID);
+            //modelBuilder.Entity<User>()
+            //    .HasMany(e => e.User1)
+            //    .WithOptional(e => e.User2)
+            //    .HasForeignKey(e => e.ParentID);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace WeChatPortal.Models
             Menu = new HashSet<Menu>();
             Product = new HashSet<Product>();
             Role = new HashSet<Role>();
-            User1 = new HashSet<User>();
+            //User1 = new HashSet<User>();
         }
 
         public int ID { get; set; }
@@ -62,9 +62,9 @@ namespace WeChatPortal.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Role> Role { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User1 { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<User> User1 { get; set; }
 
-        public virtual User User2 { get; set; }
+        //public virtual User User2 { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using WeChatPortal.Entities.Data;
+using WeChatPortal.Entities.WxResult;
 using WeChatPortal.Filters;
 using WeChatPortal.Models;
 using WeChatPortal.Services;
@@ -24,6 +25,9 @@ namespace WeChatPortal.Controllers
         {
             var entity = _service.GetAuthorizeEntity(code);
             Log4NetHelper.WriteDebug("Authorize result=" + entity.ToJson());
+            //var entity = new AuthorizeAccessTokenResult();
+            //entity.openid = "opKrYwas6Lx4_qRK9s9-NHLV-izo";
+
             var user = await _userService.GetUser(entity.openid);
             if (user != null)
             {
