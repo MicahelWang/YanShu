@@ -1,48 +1,59 @@
 ﻿{
-  "button": [
+   "button": [
     {
-      "name": "关于燕枢宝",
+      "name": "产品介绍",
       "sub_button": [
+		{
+			"type": "click",
+			"name": "隽升储蓄保障计划",
+			"key": "BCEGS"
+		},
+		{
+			"type": "click",
+			"name": "危疾终身保",
+			"key": "BCCCL3"
+		},
+		{
+			"type": "click",
+			"name": "加裕倍安保",
+			"key": "AIAPCP"
+		},
+		{
+			"type": "click",
+			"name": "充裕未来",
+			"key": "AIABP"
+		}
+
+      ]
+    },
+    {
+      "name": "我要办理",
+      "sub_button": [
+		{
+			"type": "view",
+			"name": "计划书",
+			"url": "http://www.51yanshu.com/Mobile/Plan/Create"
+		},
         {
           "type": "click",
-          "name": "企业简介",
-          "key": "aboutUs"
-        },
-        {
-          "type": "click",
-          "name": "联系我们",
-          "key": "contactUs"
+          "name": "预约签单",
+           "key": "Appointment"
         }
       ]
     },
     {
-      "name": "产品",
+      "name": "我的",
       "sub_button": [
-        {
-          "type": "view",
-          "name": "搜索",
-          "url": "http://www.soso.com/"
-        },
-        {
-          "type": "view",
-          "name": "视频",
-          "url": "http://v.qq.com/"
-        }
-      ]
-    },
-    {
-      "name": "员工管理",
-      "sub_button": [
-        {
-          "type": "view",
-          "name": "我的业绩",
-          "url": "http://www.soso.com/"
-        },
-        {
-          "type": "click",
-          "name": "推荐分享",
-          "key": "share"
-        }
+		{
+			"type": "view",
+			"name": "我的订单",
+			"url": "http://www.51yanshu.com/Mobile/Order"
+		},
+		{
+			"type": "view",
+			"name": "我的计划书",
+			"url": "http://www.51yanshu.com/Mobile/Plan"
+		}
       ]
     }
   ],
