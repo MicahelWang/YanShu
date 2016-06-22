@@ -189,15 +189,18 @@
     <Compile Include="Constants\RequestUrl.cs" />
     <Compile Include="Controllers\AuthorizeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\QrCodeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WeChatController.cs" />
     <Compile Include="Entities\Data\ArticleEntity.cs" />
+    <Compile Include="Entities\Data\TemplateMsgEntity.cs" />
     <Compile Include="Entities\WxResult\AccessTokenResult.cs" />
     <Compile Include="Entities\WxResult\AuthorizeAccessTokenResult.cs" />
     <Compile Include="Entities\WxResult\CreateQrCodeResult.cs" />
     <Compile Include="Entities\Data\ResponseEntity.cs" />
+    <Compile Include="Entities\WxResult\PushTemplateMessageResult.cs" />
     <Compile Include="Entities\WxResult\UserDataResult.cs" />
     <Compile Include="Entities\WxResult\UserDetailResult.cs" />
     <Compile Include="Entities\WxResult\UserResult.cs" />
@@ -246,6 +249,7 @@
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\ContextService.cs" />
     <Compile Include="Services\MenuService.cs" />
+    <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\WxQrCodeService.cs" />

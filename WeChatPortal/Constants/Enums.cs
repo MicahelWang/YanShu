@@ -2,6 +2,13 @@
 {
     namespace WeChat.Core.Constants
     {
+        public enum MessageType
+        {
+            BookingSuccess,
+            PlanResult,
+            Notification
+        }
+
         public enum CommonJsonSendType
         {
             GET,

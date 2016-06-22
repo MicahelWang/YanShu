@@ -142,5 +142,17 @@
             return string.Format(ShowQrCodeUrl, ticket);
         }
         #endregion
+
+        #region TemplateMessage
+
+        private const string PushTemplateMessageUrl =
+            "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={0}";
+
+        public static string PostPushTemplateMessageUrl(string token)
+        {
+            return string.Format(PushTemplateMessageUrl, token);
+        }
+
+        #endregion
     }
 }
