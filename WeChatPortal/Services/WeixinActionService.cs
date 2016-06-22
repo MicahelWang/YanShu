@@ -35,7 +35,7 @@ namespace WeChatPortal.Services
             {
                 Content = Msg
             };
-            return Task.FromResult(response); 
+            return Task.FromResult(response);
 
         }
         public Task<BaseMessage> HandleVoice(RequestVoice info)
@@ -45,7 +45,7 @@ namespace WeChatPortal.Services
             {
                 Content = Msg
             };
-            return Task.FromResult(response); 
+            return Task.FromResult(response);
 
         }
 
@@ -92,29 +92,35 @@ namespace WeChatPortal.Services
         public Task<BaseMessage> HandleEventClick(RequestEvent info)
         {
             Task<BaseMessage> response = null;
-            EventType eventType = (EventType)Enum.Parse(typeof(EventType), info.Event, true);
-            switch (eventType)
+            var message = Msg;
+            EventType eventType;
+            if (!Enum.TryParse(info.Event, out eventType))
             {
-                case EventType.Subscribe:
-                    response = _eventService.SubscribeEvent(info);
-                    break;
-                case EventType.Unsubscribe:
-                    response = _eventService.UnsubscribeEvent(info);
-                    break;
-                case EventType.Scan:
-                    break;
-                case EventType.Location:
-                    break;
-                case EventType.Click:
-                    response= _eventService.ClickEvent(info);
-                    break;
-                case EventType.View:
-                    break;
-                default:
-                    break;
+                message = "success";
             }
+            else
+                switch (eventType)
+                {
+                    case EventType.Subscribe:
+                        response = _eventService.SubscribeEvent(info);
+                        break;
+                    case EventType.Unsubscribe:
+                        response = _eventService.UnsubscribeEvent(info);
+                        break;
+                    case EventType.Scan:
+                        break;
+                    case EventType.Location:
+                        break;
+                    case EventType.Click:
+                        response = _eventService.ClickEvent(info);
+                        break;
+                    case EventType.View:
+                        break;
+                    default:
+                        break;
+                }
             if (response != null) return response;
-            BaseMessage msg = (new ResponseText(info) {Content = Msg});
+            BaseMessage msg = (new ResponseText(info) { Content = message });
             response = Task.FromResult(msg);
             return response;
         }
