@@ -16,40 +16,40 @@ namespace WeChatPortal.Services
         {
             _weixinAction = new WeixinActionService();
         }
-        public Task<BaseMessage> Execute(XmlDocument document)
+        public async Task<BaseMessage> Execute(XmlDocument document)
         {
-            Task<BaseMessage> response;
+            BaseMessage response;
             MsgType msgType = document.GetMsgType();
             switch (msgType)
             {
                 case MsgType.Text:
-                    response = _weixinAction.HandleText(document.XmlDeserializer<RequestText>());
+                    response = await _weixinAction.HandleText(document.XmlDeserializer<RequestText>());
                     break;
                 case MsgType.Image:
-                    response = _weixinAction.HandleImage(document.XmlDeserializer<RequestImage>());
+                    response = await _weixinAction.HandleImage(document.XmlDeserializer<RequestImage>());
                     break;
                 case MsgType.Voice:
-                    response = _weixinAction.HandleVoice(document.XmlDeserializer<RequestVoice>());
+                    response = await _weixinAction.HandleVoice(document.XmlDeserializer<RequestVoice>());
                     break;
                 case MsgType.Video:
-                    response = _weixinAction.HandleVideo(document.XmlDeserializer<RequestVideo>());
+                    response = await _weixinAction.HandleVideo(document.XmlDeserializer<RequestVideo>());
                     break;
                 case MsgType.ShortVideo:
-                    response = _weixinAction.HandleShortVideo(document.XmlDeserializer<RequestVideo>());
+                    response = await _weixinAction.HandleShortVideo(document.XmlDeserializer<RequestVideo>());
                     break;
                 case MsgType.Location:
-                    response = _weixinAction.HandleLocation(document.XmlDeserializer<RequestLocation>());
+                    response = await _weixinAction.HandleLocation(document.XmlDeserializer<RequestLocation>());
                     break;
                 case MsgType.Link:
-                    response = _weixinAction.HandleLink(document.XmlDeserializer<RequestLink>());
+                    response = await _weixinAction.HandleLink(document.XmlDeserializer<RequestLink>());
                     break;
                 case MsgType.Event:
-                    response = _weixinAction.HandleEventClick(document.XmlDeserializer<RequestEvent>());
+                    response = await _weixinAction.HandleEventClick(document.XmlDeserializer<RequestEvent>());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            return response;
+            return await Task.FromResult(response);
         }
     }
 }

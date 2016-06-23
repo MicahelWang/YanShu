@@ -15,13 +15,13 @@ namespace WeChatPortal.Services
             _userService = new UserService();
         }
 
-        public Task<BaseMessage> ClickEvent(RequestEvent request)
+        public async  Task<BaseMessage> ClickEvent(RequestEvent request)
         {
             var response = _contextService.GetResponseByEvent(request);
-            return Task.FromResult(response);
+            return await Task.FromResult(response);
         }
 
-        public Task<BaseMessage> SubscribeEvent(RequestEvent request)
+        public async  Task<BaseMessage> SubscribeEvent(RequestEvent request)
         {
             BaseMessage response = new ResponseText(request)
             {
@@ -38,16 +38,16 @@ namespace WeChatPortal.Services
                 }
             }
             _userService.Subscribe(request.FromUserName, recommendCode);
-            return Task.FromResult(response);
+            return await Task.FromResult(response);
         }
-        public Task<BaseMessage> UnsubscribeEvent(RequestEvent request)
+        public async  Task<BaseMessage> UnsubscribeEvent(RequestEvent request)
         {
             BaseMessage response = new ResponseText(request)
             {
                 Content = ""
             };
             _userService.Unsubscribe(request.FromUserName);
-            return Task.FromResult(response);
+            return await Task.FromResult(response);
         }
         
     }

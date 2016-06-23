@@ -17,112 +17,104 @@ namespace WeChatPortal.Services
             _eventService = new EventService();
         }
 
-        public Task<BaseMessage> HandleText(RequestText info)
+        public async  Task<BaseMessage> HandleText(RequestText info)
         {
 
             BaseMessage response = new ResponseText(info)
             {
                 Content = Msg
             };
-            return Task.FromResult(response);
+            return await Task.FromResult(response);
 
         }
 
-        public Task<BaseMessage> HandleImage(RequestImage info)
+        public async  Task<BaseMessage> HandleImage(RequestImage info)
         {
 
             BaseMessage response = new ResponseText(info)
             {
                 Content = Msg
             };
-            return Task.FromResult(response);
+            return await Task.FromResult(response);
 
         }
-        public Task<BaseMessage> HandleVoice(RequestVoice info)
+        public async  Task<BaseMessage> HandleVoice(RequestVoice info)
         {
 
             BaseMessage response = new ResponseText(info)
             {
                 Content = Msg
             };
-            return Task.FromResult(response);
+            return await Task.FromResult(response);
 
         }
 
-        public Task<BaseMessage> HandleVideo(RequestVideo info)
+        public async  Task<BaseMessage> HandleVideo(RequestVideo info)
         {
 
             BaseMessage response = new ResponseText(info)
             {
                 Content = Msg
             };
-            return Task.FromResult(response);
+            return await Task.FromResult(response);
         }
 
-        public Task<BaseMessage> HandleShortVideo(RequestVideo info)
+        public async  Task<BaseMessage> HandleShortVideo(RequestVideo info)
         {
 
             BaseMessage response = new ResponseText(info)
             {
                 Content = Msg
             };
-            return Task.FromResult(response);
+            return await Task.FromResult(response);
         }
 
-        public Task<BaseMessage> HandleLocation(RequestLocation info)
+        public async  Task<BaseMessage> HandleLocation(RequestLocation info)
         {
 
             BaseMessage response = new ResponseText(info)
             {
                 Content = Msg
             };
-            return Task.FromResult(response);
+            return await Task.FromResult(response);
         }
 
-        public Task<BaseMessage> HandleLink(RequestLink info)
+        public async Task<BaseMessage> HandleLink(RequestLink info)
         {
 
             BaseMessage response = new ResponseText(info)
             {
                 Content = Msg
             };
-            return Task.FromResult(response);
+            return await Task.FromResult(response);
         }
 
-        public Task<BaseMessage> HandleEventClick(RequestEvent info)
+        public async Task<BaseMessage> HandleEventClick(RequestEvent info)
         {
-            Task<BaseMessage> response = null;
-            var message = Msg;
+            BaseMessage response = null;
             EventType eventType;
-            if (!Enum.TryParse(info.Event, out eventType))
+            if (!Enum.TryParse(info.Event, true, out eventType)) return null;
+            switch (eventType)
             {
-                message = "success";
+                case EventType.Subscribe:
+                    response = await _eventService.SubscribeEvent(info);
+                    break;
+                case EventType.Unsubscribe:
+                    response = await _eventService.UnsubscribeEvent(info);
+                    break;
+                case EventType.Scan:
+                    break;
+                case EventType.Location:
+                    break;
+                case EventType.Click:
+                    response = await _eventService.ClickEvent(info);
+                    break;
+                case EventType.View:
+                    break;
+                default:
+                    break;
             }
-            else
-                switch (eventType)
-                {
-                    case EventType.Subscribe:
-                        response = _eventService.SubscribeEvent(info);
-                        break;
-                    case EventType.Unsubscribe:
-                        response = _eventService.UnsubscribeEvent(info);
-                        break;
-                    case EventType.Scan:
-                        break;
-                    case EventType.Location:
-                        break;
-                    case EventType.Click:
-                        response = _eventService.ClickEvent(info);
-                        break;
-                    case EventType.View:
-                        break;
-                    default:
-                        break;
-                }
-            if (response != null) return response;
-            BaseMessage msg = (new ResponseText(info) { Content = message });
-            response = Task.FromResult(msg);
-            return response;
+            return await Task.FromResult(response);
         }
     }
 }

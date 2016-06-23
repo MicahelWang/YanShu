@@ -42,9 +42,9 @@ namespace WeChatPortal.Controllers
             var xmlDoc = new XmlDocument();
             xmlDoc.Load(HttpContext.Current.Request.InputStream);
             var document = WeChatXmlHelper.Execute(xmlDoc, null);
-            Log4NetHelper.WriteLog("request:\r\n" + document.ConvertToString());
+            Log4NetHelper.WriteLog("request:\r\n" + document?.ConvertToString());
             BaseMessage response = await _chatService.Execute(document);
-            Log4NetHelper.WriteLog("response：\r\n" + response.ToXml());
+            Log4NetHelper.WriteLog("response：\r\n" + response?.ToXml());
             return response.XmlResponse();
         }
     }
