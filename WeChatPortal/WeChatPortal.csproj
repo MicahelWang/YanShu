@@ -355,6 +355,10 @@
     <Content Include="Areas\Mobile\Views\Order\Index.cshtml" />
     <Content Include="Areas\Mobile\Views\Plan\Index.cshtml" />
     <Content Include="Areas\Mobile\Views\Shared\_Layout.cshtml" />
+    <Content Include="App_Data\CclApi.md" />
+    <Content Include="App_Data\cclapi.pdf" />
+    <Content Include="App_Data\jiajiabaoxian.json" />
+    <Content Include="App_Data\test.py" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <Content Include="Scripts\angular\angular-animate.min.js.map" />
     <Content Include="Scripts\angular\angular-aria.min.js.map" />
