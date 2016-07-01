@@ -1,0 +1,131 @@
+﻿
+
+<div class="cell">
+	<div class="hd">
+		<h1 class="page_title">计划书明细</h1>
+	</div>
+	<div class="bd">
+		<div class="weui_cells_title">计划书信息</div>
+		<div class="weui_cells weui_cells_form">
+			<div class="weui_cell">
+				<div class="weui_cell_hd"><label class="weui_label">产品名称</label></div>
+				<div class="weui_cell_bd weui_cell_primary">
+					{{Detail.ProductName}}
+				</div>
+			</div>
+			<div class="weui_cell">
+				<div class="weui_cell_hd">
+					<label class="weui_label">计划书编号</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					{{Detail.PlanId}}
+				</div>
+			</div>
+		</div>
+		<div class="weui_cells_title">投保人信息</div>
+		<div class="weui_cells weui_cells_form">
+			<div class="weui_cell">
+				<div class="weui_cell_hd"><label class="weui_label">姓名</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="text" ng-model="Detail.Name" placeholder="请输入投保人姓名">
+				</div>
+			</div>
+			<div class="weui_cell">
+				<div class="weui_cell_hd">
+					<label class="weui_label">身份证</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="text" ng-model="Detail.IdCardNo" pattern="[0-9xX]*" placeholder="请输入身份证号码">
+				</div>
+			</div>
+			<div class="weui_cell">
+				<div class="weui_cell_hd">
+					<label class="weui_label">年龄</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="number" pattern="[0-9]*" ng-model="Detail.Age" placeholder="请输入投保人年龄">
+				</div>
+			</div>
+			<div class="weui_cell weui_cell_select weui_select_after">
+				<div class="weui_cell_hd">
+					<label for="" class="weui_label">性别</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<select class="weui_select" name="select2" ng-model="Detail.Sex">
+						<option value="0">请选择</option>
+						<option value="1">男</option>
+						<option value="2">女</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="weui_cells_title">投保信息</div>
+		<div class="weui_cells weui_cells_form">
+			<div class="weui_cell">
+				<div class="weui_cell_hd"><label for="" class="weui_label">卡号</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="number" pattern="[0-9]*" value="weui input error" placeholder="请输入卡号">
+				</div>
+				<div class="weui_cell_ft">
+					<i class="weui_icon_warn"></i>
+				</div>
+			</div>
+			<div class="weui_cell">
+				<div class="weui_cell_hd"><label for="" class="weui_label">日期</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="date" value="">
+				</div>
+			</div>
+			<div class="weui_cell">
+				<div class="weui_cell_hd"><label for="" class="weui_label">时间</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="datetime-local" value="" placeholder="">
+				</div>
+			</div>
+		</div>
+		<div class="weui_cells_title">联系人信息</div>
+		<div class="weui_cells weui_cells_form">
+			<div class="weui_cell">
+				<div class="weui_cell_hd"><label for="" class="weui_label">姓名</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="text" ng-model="Detail.ContactName" placeholder="请输入联系人姓名">
+				</div>
+				<div class="weui_cell_ft">
+					<i class="weui_icon_warn"></i>
+				</div>
+			</div>
+			<div class="weui_cell">
+				<div class="weui_cell_hd"><label for="" class="weui_label">电话</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" type="number" pattern="[0-9]*" ng-model="Detail.ContactPhone" placeholder="请输入联系人电话">
+				</div>
+			</div>
+		</div>
+		<div class="weui_cells_title">其他</div>
+		<div class="weui_cells">
+			<div class="weui_cell weui_cell_select weui_select_after">
+				<div class="weui_cell_hd">
+					<label for="" class="weui_label">地区</label>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<select class="weui_select" name="select2">
+						<option value="1">上海</option>
+						<option value="2">北京</option>
+						<option value="3">杭州</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="weui_opr_area">
+			<p class="weui_btn_area">
+				<a href="javascript:;" ng-click="Cancel()" class="weui_btn weui_btn_default">返回</a>
+			</p>
+		</div>
+	</div>
+</div>

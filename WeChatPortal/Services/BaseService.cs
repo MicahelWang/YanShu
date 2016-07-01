@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using WeChatPortal.Constants;
 using WeChatPortal.Constants.WeChat.Core.Constants;
 using WeChatPortal.Entities.WxResult;
 using WeChatPortal.Utils;
 using WeChatPortal.Utils.Caching;
+using WeChatPortal.Utils.Helpers;
 using WeChatPortal.Utils.HttpUtility;
 
 namespace WeChatPortal.Services
@@ -47,6 +50,14 @@ namespace WeChatPortal.Services
         {
             return Post.PostGetJson<T>(url, RequestCallBack);
         }
+
+        protected T PosForm<T>(string url,object data)
+        {
+            var formData =
+                data.AsDictionary() ;
+            return Post.PostGetJson<T>(url, null, formData);
+        }
+
         protected static ICacheManager CacheManager;
         public BaseService(ICacheManager cacheManager)
         {

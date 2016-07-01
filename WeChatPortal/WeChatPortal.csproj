@@ -179,6 +179,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Areas\Mobile\Controllers\BaseMobileController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\CalculatorController.cs" />
     <Compile Include="Areas\Mobile\Controllers\OrderController.cs" />
     <Compile Include="Areas\Mobile\Controllers\PlanController.cs" />
     <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
@@ -248,6 +249,7 @@
     <Compile Include="Services\AuthorizeService.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\ContextService.cs" />
+    <Compile Include="Services\HKApiService.cs" />
     <Compile Include="Services\MenuService.cs" />
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\ProductService.cs" />
@@ -260,6 +262,7 @@
     <Compile Include="Utils\Caching\CacheManager.cs" />
     <Compile Include="Utils\Caching\Extensions.cs" />
     <Compile Include="Utils\Caching\ICacheManager.cs" />
+    <Compile Include="Utils\Helpers\ObjectExtensions.cs" />
     <Compile Include="Utils\Helpers\DateTimeHelper.cs" />
     <Compile Include="Utils\Helpers\FileHelper.cs" />
     <Compile Include="Utils\Helpers\SerializerHelper.cs" />
@@ -280,6 +283,13 @@
     <Compile Include="Utils\WeChatEncrypt\WxBizMsgCrypt.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\calculator\app.js" />
+    <Content Include="app\calculator\CreteController.js" />
+    <Content Include="app\calculator\DetailController.js" />
+    <Content Include="app\calculator\IndexController.js" />
+    <Content Include="app\calculator\_create.html" />
+    <Content Include="app\calculator\_detail.html" />
+    <Content Include="app\calculator\_index.html" />
     <Content Include="app\order\CreteController.js" />
     <Content Include="app\order\IndexController.js" />
     <Content Include="app\order\DetailController.js" />
@@ -359,6 +369,8 @@
     <Content Include="App_Data\cclapi.pdf" />
     <Content Include="App_Data\jiajiabaoxian.json" />
     <Content Include="App_Data\test.py" />
+    <Content Include="Areas\Mobile\Views\Calculator\Index.cshtml" />
+    <Content Include="Areas\Mobile\Views\_ViewStart.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <Content Include="Scripts\angular\angular-animate.min.js.map" />
     <Content Include="Scripts\angular\angular-aria.min.js.map" />
