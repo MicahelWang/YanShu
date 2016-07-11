@@ -3,15 +3,15 @@
         $locationProvider.html5Mode(true);
         $routeProvider.
         when('/', {
-            templateUrl: '/app/plan/_index.html',
+            templateUrl: '/app/calculator/_index.html',
             controller: 'HomeController'
         }).
         when('/Create', {
-            templateUrl: '/app/plan/_create.html',
+            templateUrl: '/app/calculator/_create.html',
             controller: 'CreateController'
         }).
             when('/Detail/:id', {
-                templateUrl: '/app/plan/_detail.html',
+                templateUrl: '/app/calculator/_detail.html',
                 controller: 'DetailController'
             }).
         otherwise({
