@@ -178,6 +178,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Areas\Mobile\Controllers\AppointmentController.cs" />
     <Compile Include="Areas\Mobile\Controllers\BaseMobileController.cs" />
     <Compile Include="Areas\Mobile\Controllers\CalculatorController.cs" />
     <Compile Include="Areas\Mobile\Controllers\OrderController.cs" />
@@ -283,6 +284,9 @@
     <Compile Include="Utils\WeChatEncrypt\WxBizMsgCrypt.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\appointment\app.js" />
+    <Content Include="app\appointment\IndexController.js" />
+    <Content Include="app\appointment\_index.html" />
     <Content Include="app\calculator\app.js" />
     <Content Include="app\calculator\CreteController.js" />
     <Content Include="app\calculator\DetailController.js" />
@@ -371,6 +375,7 @@
     <Content Include="App_Data\test.py" />
     <Content Include="Areas\Mobile\Views\Calculator\Index.cshtml" />
     <Content Include="Areas\Mobile\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Mobile\Views\Appointment\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <Content Include="Scripts\angular\angular-animate.min.js.map" />
     <Content Include="Scripts\angular\angular-aria.min.js.map" />
@@ -1152,6 +1157,11 @@
     <Content Include="Scripts\angular\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\angular\i18n\angular-locale_zu.js" />
     <Content Include="Scripts\angular\version.txt" />
+    <Content Include="Scripts\bootstrap-datetimepicker\css\bootstrap-datetimepicker.css" />
+    <Content Include="Scripts\bootstrap-datetimepicker\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Scripts\bootstrap-datetimepicker\js\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.zh-CN.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\order.js" />

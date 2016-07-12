@@ -1,5 +1,5 @@
 ﻿@{
-    var baseUrl = string.Format("/{0}/{1}/", ViewContext.RouteData.DataTokens["area"],ViewContext.RouteData.Values["controller"]);
+	var baseUrl = string.Format("/{0}/{1}/", ViewContext.RouteData.DataTokens["area"], ViewContext.RouteData.Values["controller"]);
 }
 
 <!DOCTYPE html>
@@ -8,10 +8,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <base href=@baseUrl />
+	<title>@ViewBag.Title</title>
+	<base href="@baseUrl" />
 	@Styles.Render("~/Content/weuicss")
-    @Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/jquery")
+	<script src="~/Scripts/bootstrap.min.js"></script>
+	@RenderSection("styles", false);
 	<script src="~/Scripts/jquery-2.2.3.min.js"></script>
 </head>
 <body ng-app="@ViewBag.NgScopeName" class="ng-scope">
