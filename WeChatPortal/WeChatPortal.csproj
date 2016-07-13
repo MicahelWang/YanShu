@@ -141,6 +141,7 @@
     <Folder Include="Areas\Mobile\Models\" />
     <Folder Include="Scripts\angular\i18n\ngLocale\" />
     <Folder Include="Views\Authorize\" />
+    <Folder Include="Views\WeChatApi\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
