@@ -309,6 +309,7 @@
     <Content Include="app\plan\_create.html" />
     <Content Include="app\plan\_detail.html" />
     <Content Include="app\plan\_index.html" />
+    <Content Include="App_Data\CcApi.txt" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

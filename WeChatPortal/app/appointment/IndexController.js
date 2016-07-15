@@ -12,11 +12,14 @@
         $scope.AppointmentPage = true;
         $scope.ShowLoading = false;
         $scope.AppointmentSuccess = false;
-
+        $scope.Appointment = {
+            PhoneNum: "",
+            Date:""
+        };
         $scope.Submit = function () {
             $scope.ShowLoading = true;
-            console.log("11");
-            $http.get("/api/product").success(function (response) {
+            
+            $http.post("/MobileApi/Appointment", $scope.Appointment).success(function (response) {
                 $scope.AppointmentPage = false;
                 $scope.AppointmentSuccess = true;
             });

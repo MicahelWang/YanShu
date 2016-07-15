@@ -10,7 +10,7 @@
 					<label for="" class="weui_label">联系电话</label>
 				</div>
 				<div class="weui_cell_bd weui_cell_primary">
-					<input class="weui_input" type="number" pattern="[0-9]*" value="weui input" placeholder="请输入联系电话">
+					<input class="weui_input" type="number" pattern="[0-9]*"  placeholder="请输入联系电话" ng-model="Appointment.PhoneNum">
 				</div>
 				<div class="weui_cell_ft">
 					<i class="weui_icon_warn"></i>
@@ -19,7 +19,7 @@
 			<div class="weui_cell">
 				<div class="weui_cell_hd"><label for="" class="weui_label">日期</label></div>
 				<div class="weui_cell_bd weui_cell_primary">
-					<input class="weui_input" type="date" value="" >
+					<input class="weui_input" type="date" value="" ng-model="Appointment.Date" >
 				</div>
 			</div>
 		</div>

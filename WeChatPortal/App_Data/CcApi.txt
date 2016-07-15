@@ -1,0 +1,229 @@
+API说明
+===
+本API使用post方法接收参数，返回格式为json。如果成功，返回格式为：
+
+	{
+		staticOK,
+		value123.456	
+	}
+若失败，则返回：
+
+	{
+		staticError,
+		messageXXXXX
+	}	
+
+
+#### 1. beta.jiajiabaoxian.comapiccl3
+危疾終身保計劃（保诚）计算器
+
+	{
+	测试样例
+	genderm,
+	age1, 
+	smokingStatusn, 
+	currencyUSD, 
+	sumAssured30000.0,
+	PaymentTerms10,
+	payment_modeyear
+    }
+##### 说明
+	{
+	gender为字符mf,
+	age投保年龄，int、str均可范围[1,65],
+	smokingStatus吸烟状态，str s or n,
+	sumAssured投保金额 USD[15000,1200000],HKD[120000,9600000],
+	PaymentTerms 5,10,15,25,until55,until65           付款方式,5年，10年，15年，25年，25-55年，55-65年,
+	payment_mode	year,half,quarter,month			付款方式,年付，半年付，季付，月付
+	}
+#### 2. beta.jiajiabaoxian.comapipls
+理想人生計劃（保诚）计算器
+
+	{
+	测试样例
+	genderm,
+	age19, 
+	smokingStatusns, 
+	currencyusd, 
+	sumAssured30000.0,
+	PaymentTerms5ys,
+    }
+##### 说明
+	{
+	gender性别mf,
+	age[19,65],大部分在这个区间，个别情况没有参数。 
+	smokingStatusnss, 
+	currencyusdrmbhkd, 小写字符串
+	sumAssuredusd[0,+∞],rmb[0,+∞],hkd[0，+∞],
+	PaymentTerms5ys五年,sin一次付清,10ys10年,15ys,20ys,30ys,until85,until60,until65
+    }
+#### 3. beta.jiajiabaoxian.comapiegs_value
+egs现金价值
+隽陞（保诚）计算器
+
+	{
+	age30,  
+	sumAssured100w,
+	PaymentTerms5ys,
+    }
+#####说明
+
+	{
+	age30, [5,95],都为5的整数倍
+	sumAssured5w,10w,20w,100w,50w,付款方式不支持5万，会返回报错
+	PaymentTerms5ys,10ys,sin 五年，十年，一次付清
+    }
+#### 4. beta.jiajiabaoxian.comapiegs_rate
+egs现金本金赔率
+隽陞（保诚）计算器
+
+	{
+	age30,  
+	sumAssured100w,
+	PaymentTerms5ys,
+    }
+#####说明
+
+	{
+	age30, [5,95],都为5的整数倍
+	sumAssured5w,10w,20w,100w,50w,付款方式不支持5万，会返回报错
+	PaymentTerms5ys,10ys,sin 五年，十年，一次付清
+    }
+#### 5. beta.jiajiabaoxian.comapibpp_value
+bpp保证现金价值
+充裕未來（友邦AIA）计算器
+	
+	{
+	age10,  
+	sumAssured100w,
+	PaymentTerms5ys,
+    }
+#####说明
+
+	{
+	age30, [5,95],都为5的整数倍
+	sumAssured1w,2w,10w,20w,100w
+	PaymentTerms5ys,10ys,sin 五年，十年，一次付清
+    }
+	
+#### 6. beta.jiajiabaoxian.comapibpp_rate
+bpp现金价值总值
+充裕未來（友邦AIA）计算器
+
+	{
+	age10,  
+	sumAssured100w,
+	PaymentTerms5ys,
+    }
+#####说明
+
+	{
+	age30, [5,95],都为5的整数倍
+	sumAssured1w,2w,10w,20w,100w
+	PaymentTerms5ys,10ys 五年，十年
+    }
+#### 7. beta.jiajiabaoxian.comapibpp_baserate
+bpp本金翻倍率
+充裕未來（友邦AIA）计算器
+	
+	{
+	age10,  
+	sumAssured100w,
+	PaymentTerms5ys,
+    }
+#####说明
+
+	{
+	age30, [5,95],都为5的整数倍
+	sumAssured1w,2w,10w,20w,100w
+	PaymentTerms5ys,10ys 五年，十年
+    }
+	
+#### 8. beta.jiajiabaoxian.comapial2
+裕滿人生計劃（友邦AIA）计算器
+	
+	{
+	genderm,
+	age1, 
+	smokingStatusns, 
+	currencyusd, 
+	sumAssured30000.0,
+	PaymentTermssin,
+    }
+#####说明
+
+	{
+	genderm,
+	age[0,75], 
+	smokingStatusns, s
+	currencyusd,hkd 
+	sumAssured30000.0,hkd[75000,+∞],usd[10000,+∞]
+	PaymentTermssin,5ys,10ys,18ys,25ys,付款年限，一次付清，5年...
+	
+    }
+	
+#### 9. beta.jiajiabaoxian.comapipe
+加裕倍安保（友邦AIA）计算器
+	
+	{
+	genderm,
+	age1, 
+	smokingStatusns, 
+	currencyusd, 
+	sumAssured30000.0,
+	PaymentTerms18ys,
+    }
+#####说明
+
+	{
+	genderm,
+	age[0,65], 有些付款方式在某些年龄没有返回值
+	smokingStatusns, s
+	currencyusd,hkd 
+	sumAssured30000.0,hkd[75000,+∞],usd[10000,+∞]
+	PaymentTerms10ys,18ys,25ys,付款年限，10年...
+	
+    }
+	
+#### 10. beta.jiajiabaoxian.comapiplj
+守護一生保障計劃（保诚）计算器
+
+	{
+	genderm,
+	age1, 
+	smokingStatusns, 
+	currencyusd, 
+	sumAssured300000.0,
+	PaymentTerms5ys,
+    }
+#####说明
+
+	{
+	genderm,
+	age[1,18]
+	smokingStatusns, s
+	currencyusd,hkd 
+	sumAssured30000.0,hkd[800000,+∞],usd[100000,+∞],rmb[600000,+∞]
+	PaymentTerms5,10ys,15ys,付款年限，10年...
+	
+    }
+	
+#### 11. beta.jiajiabaoxian.comapifl3
+愛無憂長享計劃3(Forever Love III）（友邦AIA）计算器
+
+	{
+	genderf,
+	age54, 
+	sumAssured30000,
+	PaymentTerms15ys,
+    }
+
+#####说明
+
+	{
+	genderm,f
+	age[0,55]
+	sumAssuredusd[5000,+∞]
+	PaymentTerms6ys,10ys,15ys,20ys 付款年限，10年...
+	
+    }
