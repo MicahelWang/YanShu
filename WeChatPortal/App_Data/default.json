@@ -3,54 +3,54 @@
     {
       "name": "产品介绍",
       "sub_button": [
-		{
-			"type": "click",
-			"name": "隽升储蓄保障计划",
-			"key": "BCEGS"
-		},
-		{
-			"type": "click",
-			"name": "危疾终身保",
-			"key": "BCCCL3"
-		},
-		{
-			"type": "click",
-			"name": "加裕倍安保",
-			"key": "AIAPCP"
-		},
-		{
-			"type": "click",
-			"name": "充裕未来",
-			"key": "AIABP"
-		}
+        {
+          "type": "click",
+          "name": "隽升储蓄保障计划",
+          "key": "BCEGS"
+        },
+        {
+          "type": "click",
+          "name": "危疾终身保",
+          "key": "BCCCL3"
+        },
+        {
+          "type": "click",
+          "name": "加裕倍安保",
+          "key": "AIAPCP"
+        },
+        {
+          "type": "click",
+          "name": "充裕未来",
+          "key": "AIABP"
+        }
 
       ]
     },
     {
       "name": "我要办理",
       "sub_button": [
-		{
-			"type": "view",
-			"name": "计划书",
-			"url": "http://www.51yanshu.com/Mobile/Plan/Create"
-		},
         {
-          "type": "click",
+          "type": "view",
+          "name": "计划书",
+          "url": "http://www.51yanshu.com/Mobile/Plan/Create"
+        },
+        {
+          "type": "view",
           "name": "预约签单",
-           "key": "Appointment"
+          "url": "http://www.51yanshu.com/Mobile/Appointment/"
         }
       ]
     },
     {
       "name": "我的",
       "sub_button": [
-		{
-			"type": "view",
-			"name": "我的订单",
-			"url": "http://www.51yanshu.com/Mobile/Order"
-		},
         {
-           "type": "view",
+          "type": "view",
+          "name": "我的订单",
+          "url": "http://www.51yanshu.com/Mobile/Order"
+        },
+        {
+          "type": "view",
           "name": "我的计划书",
           "url": "http://www.51yanshu.com/Mobile/Plan"
         }
