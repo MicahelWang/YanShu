@@ -21,10 +21,8 @@
             Gender: 0,
             ShowGender: false,
         };
-        $scope.NextStep = function () {
-            console.info($scope.CreatePlan.SumAssuredArray);
-            if ($scope.CreatePlan.ProductType !== 0) {
-                console.log($scope.CreatePlan.ProductType);
+        $scope.NextStep = function () {            
+            if ($scope.CreatePlan.ProductType !== 0) {               
                 switch ($scope.CreatePlan.ProductType) {
                     case "1":
                         $scope.CreatePlan.ShowAge = true;
@@ -46,7 +44,6 @@
                     default:
 
                 }
-                console.info($scope.CreatePlan.SumAssuredArray);
                 $scope.SelectedProduct = true;
             }
 
