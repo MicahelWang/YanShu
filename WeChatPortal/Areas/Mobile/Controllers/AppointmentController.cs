@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WeChatPortal.Entities.Data;
+using WeChatPortal.Filters;
 using WeChatPortal.Services;
 using WeChatPortal.Utils.HttpUtility;
 
 namespace WeChatPortal.Areas.Mobile.Controllers
 {
+    [YanShuAuthorize]
     public class AppointmentController : MobileBaseController
     {
         private readonly MessageService _messageService = new MessageService();
@@ -19,7 +22,7 @@ namespace WeChatPortal.Areas.Mobile.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult Index(string phoneNum, string date)
+        public async Task<JsonResult> Index(string phoneNum, string date)
         {
             var result = new ResponseEntity<object>
             {
@@ -40,10 +43,10 @@ namespace WeChatPortal.Areas.Mobile.Controllers
             {
                 template_id = templateId,
                 touser = openId,
-                url = "",
+                url = "https://www.baidu.com/",
                 data = data
             };
-            _messageService.PushTemplateMessage(entity);
+            await _messageService.PushTemplateMessage(entity);
             return Json(result);
         }
     }
