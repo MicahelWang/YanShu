@@ -26,13 +26,13 @@ namespace WeChatPortal.Areas.Mobile.Controllers
                 Success = true,
                 Data = null
             };
-            var AppointmentDate = Convert.ToDateTime(date);
+            var appointmentDate = Convert.ToDateTime(date);
             var templateId = "CMk-nzNl_Zhkarcmn1FoYzobHxDe0387WPBrqkwcDS4";
             var data = new
             {
                 first = new TemplateDataEntity("恭喜您，你的预约已经成功。", "#FF3030"),
                 keyword1 = new TemplateDataEntity("投保行程预约", "#173177"),
-                keyword2 = new TemplateDataEntity(AppointmentDate.ToString("yyyy年MM月dd日"), "#FF3030"),
+                keyword2 = new TemplateDataEntity(appointmentDate.ToString("yyyy年MM月dd日"), "#FF3030"),
                 remark = new TemplateDataEntity("如有疑问，请及时联系。", "#173177")
             };
             var openId = CurrentUser.OpenID;
