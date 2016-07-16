@@ -31,8 +31,8 @@
       "sub_button": [
         {
           "type": "view",
-          "name": "计划书",
-          "url": "http://www.51yanshu.com/Mobile/Plan/Create"
+          "name": "保费计算器",
+          "url": "http://www.51yanshu.com/Mobile/Calculator/Create"
         },
         {
           "type": "view",

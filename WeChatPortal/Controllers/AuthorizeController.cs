@@ -23,10 +23,10 @@ namespace WeChatPortal.Controllers
         // GET: Authorize
         public async Task<ActionResult> Index(string code, string state)
         {
-            //var entity = _service.GetAuthorizeEntity(code);
-            //Log4NetHelper.WriteDebug("Authorize result=" + entity.ToJson());
-            var entity = new AuthorizeAccessTokenResult();
-            entity.openid = "opKrYwas6Lx4_qRK9s9-NHLV-izo";
+            var entity = _service.GetAuthorizeEntity(code);
+            Log4NetHelper.WriteDebug("Authorize result=" + entity.ToJson());
+            //var entity = new AuthorizeAccessTokenResult();
+            //entity.openid = "opKrYwas6Lx4_qRK9s9-NHLV-izo";
 
             var user = await _userService.GetUser(entity.openid);
             if (user != null)
