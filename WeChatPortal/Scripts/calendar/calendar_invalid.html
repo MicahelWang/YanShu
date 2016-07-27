@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+    <title>Invalid days</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.7/angular-animate.min.js"></script>
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    <link rel="stylesheet" href="css/mobiscroll.custom-3.0.0-beta3.min.css" type="text/css" />
+    <script src="js/mobiscroll.custom-3.0.0-beta3.min.js"></script>
+
+    <style type="text/css">
+        
+        /* Demo Page styling, you can ignore this in your implementation */
+		
+		html, body {
+			height: 100%;
+		}
+		
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button {
+            display: inline-block;
+            text-decoration: none;
+            padding: 0.8em 2.6em;
+            margin: 20px 10px 0 0;
+            outline: 0;
+            border: 0;
+            overflow: visible;
+            cursor: pointer;
+            color: #fff;
+            background: #5185a8;
+            font-family: Arial, sans-serif, verdana;
+            font-size: 14px;
+            font-weight: 100;
+            -webkit-transition: background 0.3s ease-out;
+            -moz-transition: background 0.3s ease-out;
+            -o-transition: background 0.3s ease-out;
+            transition: background 0.3s ease-out;
+        }
+        
+        button:hover {
+            background: #34566d;
+        }
+
+        input {
+            width: 100%;
+            margin: 0 0 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 0;
+            background: #fff;
+            font-family: Arial, sans-serif,verdana;
+            text-shadow: none;
+            color: #000;
+            font-size: 15px;
+            -webkit-appearance: none;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+		
+		.demo-main-cont {
+			height: 100%;
+		}
+		
+        .demo-iframe { 
+            padding: 10px 10px 10px 10px; 
+            text-shadow: none; 
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="demo-main-cont demo-comp-calendar demo-display-bottom demo-theme-material">
+        <div class="demo-iframe demo-invalid">
+            <!-- Calendar demo markup -->
+        
+        <div ng-app="demoApp" ng-controller="demoController">
+            <input ng-model="mycalendar" mobiscroll-calendar="settings" mobiscroll-instance="demo" placeholder="Please Select..." />
+
+            <button ng-click="demo.clear()">Clear</button>
+            <button ng-click="demo.show()">Show</button>
+            
+        </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    angular
+        .module('demoApp', ['mobiscroll-calendar'])
+        .controller('demoController', ['$scope', function ($scope) {
+    
+            $scope.settings = {
+                theme: 'material',                              // Specify theme like: theme: 'ios' or omit setting to use default
+            lang: 'zh',                                         // Specify language like: lang: 'pl' or omit setting to use default
+            display: 'bottom',                                  // Specify display mode like: display: 'bottom' or omit setting to use default
+                controls: ['calendar'],                         // More info about controls: https://docs.mobiscroll.com/3-0-0_beta3/angular/calendar#!opt-controls
+                buttons: [],                                    // More info about buttons: https://docs.mobiscroll.com/3-0-0_beta3/angular/calendar#!opt-buttons
+                setOnDayTap: true,                              // More info about setOnDayTap: https://docs.mobiscroll.com/3-0-0_beta3/angular/calendar#!opt-setOnDayTap
+                invalid: ['w0', 'w6', '5/1', '12/24', '12/25']  // More info about invalid: https://docs.mobiscroll.com/3-0-0_beta3/angular/calendar#!opt-invalid
+            };
+    
+        }]);
+    </script>
+</body>
+</html>

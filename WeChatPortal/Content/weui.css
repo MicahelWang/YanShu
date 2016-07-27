@@ -1446,7 +1446,7 @@ a.weui_media_box:active {
   position: fixed;
   z-index: 3;
   width: 7.6em;
-  min-height: 7.6em;
+  /*min-height: 7.6em;*/
   top: 180px;
   left: 50%;
   margin-left: -3.8em;

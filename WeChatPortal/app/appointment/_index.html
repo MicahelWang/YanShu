@@ -1,69 +1,76 @@
 ﻿<div class="cell" ng-show="AppointmentPage">
-	<div class="hd">
-		<h1 class="page_title">我要预约</h1>
-	</div>
-	<div class="bd">
-		<div class="weui_cells_title">我要预约</div>
-		<div class="weui_cells weui_cells_form">
-			<div class="weui_cell">
-				<div class="weui_cell_hd">
-					<label for="" class="weui_label">联系电话</label>
-				</div>
-				<div class="weui_cell_bd weui_cell_primary">
-					<input class="weui_input" type="number" pattern="[0-9]*"  placeholder="请输入联系电话" ng-model="Appointment.PhoneNum">
-				</div>
-				<div class="weui_cell_ft">
-					<i class="weui_icon_warn"></i>
-				</div>
-			</div>
-			<div class="weui_cell">
-				<div class="weui_cell_hd"><label for="" class="weui_label">日期</label></div>
-				<div class="weui_cell_bd weui_cell_primary">
-					<input class="weui_input" type="date" value="" ng-model="Appointment.Date" >
-				</div>
-			</div>
-		</div>
-		<div class="weui_btn_area">
-			<a href="javascript:;" ng-click="Submit()" class="weui_btn weui_btn_primary">确定</a>
-		</div>
+    <div class="hd">
+        <h1 class="page_title">我要预约</h1>
+    </div>
+    <div class="bd">
+        <div class="weui_cells_title">我要预约</div>
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_hd">
+                    <label for="" class="weui_label">联系电话</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="number" pattern="[0-9]*" placeholder="请输入联系电话" ng-model="Appointment.PhoneNum">
+                </div>
+                <div class="weui_cell_ft">
+                    <i class="weui_icon_warn"></i>
+                </div>
+            </div>
+        </div>
+        <div class="weui_cells_title">预约日期</div>
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_hd jalendar" id="datetimepicker">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label for="" class="weui_label">预约日期</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" value="" readonly="readonly" ng-model="Appointment.Date">
+                </div>
+            </div>
+        </div>
+        <div class="weui_btn_area">
+            <a href="javascript:;" ng-click="Submit()" class="weui_btn weui_btn_primary">确定</a>
+        </div>
 
-	</div>
-	<div id="loadingToast" class="weui_loading_toast" ng-show="ShowLoading">
-		<div class="weui_mask_transparent"></div>
-		<div class="weui_toast">
-			<div class="weui_loading">
-				<div class="weui_loading_leaf weui_loading_leaf_0"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_1"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_2"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_3"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_4"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_5"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_6"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_7"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_8"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_9"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_10"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_11"></div>
-			</div>
-			<p class="weui_toast_content">数据加载中</p>
-		</div>
-	</div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" ng-show="ShowLoading">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
 </div>
 <div class="msg" ng-show="AppointmentSuccess">
-	<div class="weui_msg">
-		<div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg"></i></div>
-		<div class="weui_text_area">
-			<h2 class="weui_msg_title">预约成功</h2>
-			<p class="weui_msg_desc">内容详情，可根据实际需要安排</p>
-		</div>
-		<div class="weui_opr_area">
-			<p class="weui_btn_area">
-				<a href="javascript:WeixinJSBridge.call('closeWindow');" class="weui_btn weui_btn_primary">确定</a>
-				<a href="javascript:history.go(-1);" class="weui_btn weui_btn_default">取消</a>
-			</p>
-		</div>
-		<div class="weui_extra_area">
-			<a href="">查看详情</a>
-		</div>
-	</div>
+    <div class="weui_msg">
+        <div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg"></i></div>
+        <div class="weui_text_area">
+            <h2 class="weui_msg_title">预约成功</h2>
+            <p class="weui_msg_desc">内容详情，可根据实际需要安排</p>
+        </div>
+        <div class="weui_opr_area">
+            <p class="weui_btn_area">
+                <a href="javascript:WeixinJSBridge.call('closeWindow');" class="weui_btn weui_btn_primary">确定</a>
+                <a href="javascript:history.go(-1);" class="weui_btn weui_btn_default">取消</a>
+            </p>
+        </div>
+        <div class="weui_extra_area">
+            <a href="">查看详情</a>
+        </div>
+    </div>
 </div>
