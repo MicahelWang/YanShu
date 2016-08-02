@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dea59b9dd0a74d74b29007a407f48e72" Name="Diagram1">
+        <EntityTypeShape EntityType="InsuranceModel.Article" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceModel.ArticleContent" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceModel.Content" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceModel.Group" Width="1.5" PointX="3.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceModel.Menu" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceModel.Product" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceModel.Role" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceModel.User" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="InsuranceModel.FK_Article_User" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceModel.FK_ArticleContent_Article" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceModel.FK_ArticleContent_Content" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceModel.FK_Content_User" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceModel.FK_Menu_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceModel.FK_Role_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceModel.FK_Menu_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceModel.FK_Menu_User" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceModel.FK_Product_User" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceModel.FK_Role_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
