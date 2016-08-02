@@ -22,6 +22,8 @@ namespace WeChatPortal.Models
             this.Menus = new HashSet<Menu>();
             this.Products = new HashSet<Product>();
             this.Roles = new HashSet<Role>();
+            this.Appointments = new HashSet<Appointment>();
+            this.Calculators = new HashSet<Calculator>();
         }
     
         public int ID { get; set; }
@@ -45,5 +47,9 @@ namespace WeChatPortal.Models
         public virtual ICollection<Product> Products { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Role> Roles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Appointment> Appointments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Calculator> Calculators { get; set; }
     }
 }

@@ -238,10 +238,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Appointment.cs">
+      <DependentUpon>InsuranceDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Article.cs">
       <DependentUpon>InsuranceDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ArticleContent.cs">
+      <DependentUpon>InsuranceDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Calculator.cs">
       <DependentUpon>InsuranceDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Content.cs">
@@ -279,6 +285,7 @@
       <DependentUpon>InsuranceDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AppointmentService.cs" />
     <Compile Include="Services\AuthorizeService.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\ContextService.cs" />

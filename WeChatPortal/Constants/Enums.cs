@@ -4,7 +4,7 @@
     {
         public enum MessageType
         {
-            BookingSuccess,
+            AppointmentSuccess,
             PlanResult,
             Notification
         }

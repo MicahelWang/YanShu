@@ -4,7 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="InsuranceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="InsuranceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppointmentDate" Type="date" Nullable="false" />
+          <Property Name="PhoneNum" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Article">
           <Key>
             <PropertyRef Name="ID" />
@@ -24,6 +36,22 @@
           <Property Name="ArticleID" Type="int" Nullable="false" />
           <Property Name="ContentID" Type="int" Nullable="false" />
           <Property Name="Sort" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Calculator">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="SumAssured" Type="int" Nullable="false" />
+          <Property Name="PaymentTerm" Type="int" Nullable="false" />
+          <Property Name="Currency" Type="int" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Content">
           <Key>
@@ -94,6 +122,18 @@
           <Property Name="Gender" Type="int" />
           <Property Name="ParentID" Type="int" />
         </EntityType>
+        <Association Name="FK_Appointment_UserId">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Article_User">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
@@ -127,6 +167,30 @@
             </Principal>
             <Dependent Role="ArticleContent">
               <PropertyRef Name="ContentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calculator_ProductId">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Calculator" Type="Self.Calculator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Calculator">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calculator_UserId">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Calculator" Type="Self.Calculator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Calculator">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -215,14 +279,20 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="InsuranceModelStoreContainer">
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ArticleContent" EntityType="Self.ArticleContent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calculator" EntityType="Self.Calculator" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Content" EntityType="Self.Content" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Appointment_UserId" Association="Self.FK_Appointment_UserId">
+            <End Role="User" EntitySet="User" />
+            <End Role="Appointment" EntitySet="Appointment" />
+          </AssociationSet>
           <AssociationSet Name="FK_Article_User" Association="Self.FK_Article_User">
             <End Role="User" EntitySet="User" />
             <End Role="Article" EntitySet="Article" />
@@ -234,6 +304,14 @@
           <AssociationSet Name="FK_ArticleContent_Content" Association="Self.FK_ArticleContent_Content">
             <End Role="Content" EntitySet="Content" />
             <End Role="ArticleContent" EntitySet="ArticleContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calculator_ProductId" Association="Self.FK_Calculator_ProductId">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Calculator" EntitySet="Calculator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calculator_UserId" Association="Self.FK_Calculator_UserId">
+            <End Role="User" EntitySet="User" />
+            <End Role="Calculator" EntitySet="Calculator" />
           </AssociationSet>
           <AssociationSet Name="FK_Content_User" Association="Self.FK_Content_User">
             <End Role="User" EntitySet="User" />
@@ -264,8 +342,7 @@
             <End Role="Role" EntitySet="Role" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="InsuranceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -345,6 +422,7 @@
           <Property Name="UpdatedBy" Type="Int32" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Product_User" FromRole="Product" ToRole="User" />
+          <NavigationProperty Name="Calculators" Relationship="InsuranceModel.FK_ProductId" FromRole="Product" ToRole="Calculator" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -377,6 +455,8 @@
           <NavigationProperty Name="Menus" Relationship="Self.FK_Menu_User" FromRole="User" ToRole="Menu" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Product_User" FromRole="User" ToRole="Product" />
           <NavigationProperty Name="Roles" Relationship="Self.FK_Role_User" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Appointments" Relationship="InsuranceModel.FK_UserId" FromRole="User" ToRole="Appointment" />
+          <NavigationProperty Name="Calculators" Relationship="InsuranceModel.FK_Calculator_UserId" FromRole="User" ToRole="Calculator" />
         </EntityType>
         <Association Name="FK_Article_User">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
@@ -547,7 +627,88 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Role" EntitySet="Roles" />
           </AssociationSet>
+          <EntitySet Name="Appointments" EntityType="InsuranceModel.Appointment" />
+          <EntitySet Name="Calculators" EntityType="InsuranceModel.Calculator" />
+          <AssociationSet Name="FK_UserId" Association="InsuranceModel.FK_UserId">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calculator_UserId" Association="InsuranceModel.FK_Calculator_UserId">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Calculator" EntitySet="Calculators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductId" Association="InsuranceModel.FK_ProductId">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Calculator" EntitySet="Calculators" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppointmentDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="InsuranceModel.FK_UserId" FromRole="Appointment" ToRole="User" />
+          <Property Name="PhoneNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Calculator">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="SumAssured" Type="Int32" Nullable="false" />
+          <Property Name="PaymentTerm" Type="Int32" Nullable="false" />
+          <Property Name="Currency" Type="Int32" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="InsuranceModel.FK_Calculator_UserId" FromRole="Calculator" ToRole="User" />
+          <NavigationProperty Name="Product" Relationship="InsuranceModel.FK_ProductId" FromRole="Calculator" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_UserId">
+          <End Type="InsuranceModel.User" Role="User" Multiplicity="1" />
+          <End Type="InsuranceModel.Appointment" Role="Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calculator_UserId">
+          <End Type="InsuranceModel.User" Role="User" Multiplicity="1" />
+          <End Type="InsuranceModel.Calculator" Role="Calculator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Calculator">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductId">
+          <End Type="InsuranceModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="InsuranceModel.Calculator" Role="Calculator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Calculator">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -647,6 +808,36 @@
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="InsuranceModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calculators">
+            <EntityTypeMapping TypeName="InsuranceModel.Calculator">
+              <MappingFragment StoreEntitySet="Calculator">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="PaymentTerm" ColumnName="PaymentTerm" />
+                <ScalarProperty Name="SumAssured" ColumnName="SumAssured" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

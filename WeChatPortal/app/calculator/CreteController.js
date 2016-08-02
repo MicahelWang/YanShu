@@ -31,7 +31,10 @@
                         $scope.CreatePlan.SumAssuredArray = [{ Text: "请选择", Value: "0" }, { Text: "10万", Value: "10" }, { Text: "20万", Value: "20" }, { Text: "50万", Value: "50" }, { Text: "100万", Value: "100" }];
                         $scope.CreatePlan.PaymentTermsArray = [{ Text: "请选择", Value: "0" }, { Text: "5年", Value: "5ys" }, { Text: "10年", Value: "10ys" }, { Text: "一次结清", Value: "sin" }];
                         break;
+                    case "2":
                     case "3":
+                    case "4":
+                    case "5":
                         $scope.CreatePlan.ShowGender = true;
                         $scope.CreatePlan.ShowAge = true;
                         $scope.CreatePlan.ShowPaymentTerms = true;

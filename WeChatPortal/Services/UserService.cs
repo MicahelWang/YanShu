@@ -14,7 +14,7 @@ namespace WeChatPortal.Services
     public class UserService : BaseService
     {
         private List<User> Users
-            => CacheManager.Get(CacheKey.Users,GetUsers);
+            => CacheManager.Get(CacheKey.Users, GetUsers);
 
         private readonly InsuranceDb _db = new InsuranceDb();
 
@@ -59,6 +59,11 @@ namespace WeChatPortal.Services
                 Subscribe(openId, "0");
             }
             return await Task.FromResult(result);
+        }
+        public User GetEntity(int id)
+        {
+            var result = Users.FirstOrDefault(m => m.ID == id);
+            return result;
         }
         public void Unsubscribe(string openId)
         {
