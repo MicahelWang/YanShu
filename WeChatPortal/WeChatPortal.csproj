@@ -140,7 +140,6 @@
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Mobile\Models\" />
     <Folder Include="Scripts\angular\i18n\ngLocale\" />
-    <Folder Include="Scripts\calendar\" />
     <Folder Include="Views\Authorize\" />
     <Folder Include="Views\WeChatApi\" />
   </ItemGroup>
@@ -1221,9 +1220,6 @@
     <Content Include="Scripts\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.zh-CN.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jalendar2\js\jalendar.min.js" />
-    <Content Include="Scripts\jalendar2\js\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jalendar2\style\jalendar.css" />
     <Content Include="Scripts\order.js" />
     <Content Include="Scripts\Base.js" />
     <Content Include="Scripts\plan.js" />
