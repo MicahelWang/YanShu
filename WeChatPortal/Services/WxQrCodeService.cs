@@ -39,7 +39,7 @@ namespace WeChatPortal.Services
             {
                 data = new
                 {
-                    action_name = "QR_LIMIT_SCENE",
+                    action_name = "QR_LIMIT_STR_SCENE",
                     action_info = new
                     {
                         scene = new
