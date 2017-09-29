@@ -11,11 +11,11 @@ namespace WeChatPortal.Services
         /// <summary>
         /// 生成二维码
         /// </summary>
-        /// <param name="sceneId">场景值ID（字符串形式的ID），字符串类型，长度限制为1到64，仅永久二维码支持此字段</param>
+        /// <param name="sceneStr">场景值ID（字符串形式的ID），字符串类型，长度限制为1到64</param>
         /// <param name="qrCodeType" ref="QrCodeType">二维码类型</param>
         /// <param name="expireSeconds">有效期【临时二维码需要设置】</param>
         /// <returns></returns>
-        public async Task<CreateQrCodeResult> CreateQrCode(int sceneId, QrCodeType qrCodeType = QrCodeType.QrScene, int expireSeconds = 1800)
+        public async Task<CreateQrCodeResult> CreateQrCode(string sceneStr, QrCodeType qrCodeType = QrCodeType.QrScene, int expireSeconds = 1800)
         {
             object data = null;
 
@@ -25,12 +25,12 @@ namespace WeChatPortal.Services
                 data = new
                 {
                     expire_seconds = expireSeconds,
-                    action_name = "QR_SCENE",
+                    action_name = "QR_STR_SCENE",
                     action_info = new
                     {
                         scene = new
                         {
-                            scene_id = sceneId
+                            scene_str = sceneStr
                         }
                     }
                 };
@@ -44,7 +44,7 @@ namespace WeChatPortal.Services
                     {
                         scene = new
                         {
-                            scene_id = sceneId
+                            scene_str = sceneStr
                         }
                     }
                 };
@@ -53,24 +53,6 @@ namespace WeChatPortal.Services
 
             return await PostSendJson<CreateQrCodeResult>(url, data);
         }
-
-        public async Task<CreateQrCodeResult> CreateQrCode(string sceneStr)
-        {
-            object data = new
-            {
-                action_name = "QR_LIMIT_STR_SCENE",
-                action_info = new
-                {
-                    scene = new
-                    {
-                        scene_str = sceneStr
-                    }
-                }
-            };
-
-            var url = RequestUrl.PostCreateQrCodeUrl(this.Token);
-
-            return await PostSendJson<CreateQrCodeResult>(url, data);
-        }
+       
     }
 }
