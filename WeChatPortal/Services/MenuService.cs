@@ -11,7 +11,7 @@ namespace WeChatPortal.Services
         private readonly InsuranceDb _db = new InsuranceDb();
         public IEnumerable<Menu> GetMenus()
         {
-            return _db.Menu.Include(".Menu1").ToList();
+            return _db.Menus.Include(".Menu1").ToList();
         }
     }
 }

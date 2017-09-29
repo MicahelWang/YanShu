@@ -1,17 +1,16 @@
 ﻿@{
-	ViewBag.Title = "我要预约";
-	ViewBag.NgScopeName = "ngAppointmentApp";
-	Layout = "~/Views/Shared/_MobileLayout.cshtml";
+    ViewBag.Title = "我要预约";
+    ViewBag.NgScopeName = "ngAppointmentApp";
+    Layout = "~/Views/Shared/_MobileLayout.cshtml";
 }
 @section styles{
-	<link href="~/Scripts/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Scripts/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
 }
 @section scripts{
 
-	<script src="~/Scripts/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-	<script src="~/Scripts/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
-	<script src="~/app/appointment/app.js"></script>
-	<script src="~/app/appointment/IndexController.js"></script>
-	
-	@*@Scripts.Render("~/bundles/planjs")*@
+    <script src="~/Scripts/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="~/app/appointment/app.js"></script>
+    <script src="~/app/appointment/IndexController.js"></script>
+    @*@Scripts.Render("~/bundles/planjs")*@
 }

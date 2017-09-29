@@ -12,15 +12,21 @@ namespace WeChatPortal.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Calculator
     {
         public int ID { get; set; }
-        public string Name { get; set; }
-        public int GroupID { get; set; }
-        public Nullable<System.DateTime> UpdatedDate { get; set; }
-        public Nullable<int> UpdatedBy { get; set; }
+        public int ProductId { get; set; }
+        public int UserId { get; set; }
+        public int SumAssured { get; set; }
+        public int PaymentTerm { get; set; }
+        public int Currency { get; set; }
+        public int Age { get; set; }
+        public int Gender { get; set; }
+        public System.DateTime CreateTime { get; set; }
+        public int Status { get; set; }
+        public bool IsDelete { get; set; }
     
-        public virtual Group Group { get; set; }
         public virtual User User { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace WeChatPortal.Services
 
         public Article GetContextByKey(string key)
         {
-            var context = _db.Article.Include("ArticleContent.Content").FirstOrDefault(m => m.KeyName==key);
+            var context = _db.Articles.Include("ArticleContents.Content").FirstOrDefault(m => m.KeyName==key);
             return context;
         }
 
@@ -34,9 +34,9 @@ namespace WeChatPortal.Services
                     case (int)ResponseType.News:
                         var newsResponse = new ResponseNews(request)
                         {
-                            ArticleCount = eventContext.ArticleContent.Count,
+                            ArticleCount = eventContext.ArticleContents.Count,
                             Articles =
-                                eventContext.ArticleContent.OrderBy(m => m.Sort).Select(content => new ArticleEntity()
+                                eventContext.ArticleContents.OrderBy(m => m.Sort).Select(content => new ArticleEntity()
                                 {
                                     Title = content.Content.Title,
                                     PicUrl = content.Content.Image,
@@ -47,7 +47,7 @@ namespace WeChatPortal.Services
                         return newsResponse;
                     case (int)ResponseType.Text:
                         var textResponse = new ResponseText(request);
-                        var articles = eventContext.ArticleContent.FirstOrDefault();
+                        var articles = eventContext.ArticleContents.FirstOrDefault();
                         var text = articles == null ? "" : articles.Content.Description;
                         textResponse.Content = text;
                         return textResponse;

@@ -6,23 +6,38 @@ using WeChatPortal.Utils;
 
 namespace WeChatPortal.Controllers
 {
-    public abstract class BaseController: Controller
+    public abstract class BaseController : Controller
     {
-        protected readonly User CurrentUser;
-
+        private User _currentUser;
         protected BaseController()
         {
-            try
+
+
+        }
+
+        public User CurrentUser
+        {
+            get
             {
-                var cookie = Request.Cookies[FormsAuthentication.FormsCookieName];
-                var ticket = FormsAuthentication.Decrypt(cookie.Value);
-                CurrentUser = ticket.UserData.DeserializeJson<User>();
+                _currentUser = new User();
+                try
+                {
+                    var cookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+                    if (cookie == null)
+                    {
+                        Log4NetHelper.WriteDebug("cookie 为 Null");
+                        return _currentUser;
+                    }
+                    var ticket = FormsAuthentication.Decrypt(cookie.Value);
+                    if (ticket != null)
+                        _currentUser = ticket.UserData.DeserializeJson<User>();
+                }
+                catch (Exception ex)
+                {
+                    Log4NetHelper.WriteDebug("用户获取失败,Exception={" + ex.Message + "}");
+                }
+                return _currentUser;
             }
-            catch (Exception)
-            {
-                CurrentUser = new User();
-            }
-           
         }
     }
 }

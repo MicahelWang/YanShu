@@ -14,15 +14,15 @@ namespace WeChatPortal.Services
     public class UserService : BaseService
     {
         private List<User> Users
-            => CacheManager.Get(CacheKey.Users,GetUsers);
+            => CacheManager.Get(CacheKey.Users, GetUsers);
 
         private readonly InsuranceDb _db = new InsuranceDb();
 
         public async Task<User> AddUser(User entity)
         {
-            if (!_db.User.Any(m => m.OpenID == entity.OpenID))
+            if (!_db.Users.Any(m => m.OpenID == entity.OpenID))
             {
-                _db.User.Add(entity);
+                _db.Users.Add(entity);
                 CacheManager.Remove(CacheKey.Users);
                 _db.SaveChanges();
             }
@@ -60,6 +60,11 @@ namespace WeChatPortal.Services
             }
             return await Task.FromResult(result);
         }
+        public User GetEntity(int id)
+        {
+            var result = Users.FirstOrDefault(m => m.ID == id);
+            return result;
+        }
         public void Unsubscribe(string openId)
         {
             Delete(openId);
@@ -69,7 +74,7 @@ namespace WeChatPortal.Services
         {
             Task.Run(() =>
             {
-                var entity = _db.User.FirstOrDefault(m => m.OpenID == openId);
+                var entity = _db.Users.FirstOrDefault(m => m.OpenID == openId);
                 if (entity == null)
                 {
                     return; ;
@@ -107,7 +112,7 @@ namespace WeChatPortal.Services
 
         public List<User> GetUsers()
         {
-            var result = _db.User.ToList();
+            var result = _db.Users.ToList();
             return result;
         }
 

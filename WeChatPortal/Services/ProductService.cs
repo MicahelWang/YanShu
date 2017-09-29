@@ -20,7 +20,7 @@ namespace WeChatPortal.Services
 
         private List<Product> GetAllProducts()
         {
-            return _db.Product.ToList();
+            return _db.Products.ToList();
         }
 
 
