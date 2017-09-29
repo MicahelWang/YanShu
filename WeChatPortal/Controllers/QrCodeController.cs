@@ -24,4 +24,3 @@ namespace WeChatPortal.Controllers
 
     }
 }
-}
